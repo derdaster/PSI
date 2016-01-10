@@ -1,8 +1,8 @@
-Host: abecadlo.zapto.org
+ï»¿Host: abecadlo.zapto.org
 Port: 9998
 User: psi
 Password: psi.PWr.2015
 
-Aby siê po³¹czyæ siê z baz¹ danych przez SQL Server Managment Studio nale¿y wprowadziæ dane:
+Aby siÄ™ poÅ‚Ä…czyÄ‡ siÄ™ z bazÄ… danych przez SQL Server Managment Studio naleÅ¼y wprowadziÄ‡ dane:
 Server name: abecadlo.zapto.org,9998
-Login i has³o jak wy¿ej.
+Login i hasÅ‚o jak wyÅ¼ej.

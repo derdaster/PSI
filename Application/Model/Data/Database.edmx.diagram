@@ -6,6 +6,37 @@
     <edmx:Diagrams>
       <Diagram DiagramId="524adf50f54944d4bb4d430599f9b86f" Name="Diagram1">
         <EntityTypeShape EntityType="EasyKRKModel.Karta_przedmiotu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EasyKRKModel.Autor_karty_przedmiotu" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Cel_przedmiotu" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Forma_studiów" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Forma_zajęć" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Grupa_kursów" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Kierunek" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Kierunkowy_efekt_kształcenia" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Kurs" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Literatura" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Ministerialny_efekt_kształcenia" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Moduł_kształcenia" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Narzędzia_dydaktyczne" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Obszar_kształcenia" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Ocena_osiągnięć" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Plan_studiów" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Poziom_kształcenia" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Profil_kształcenia" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Program_kształcenia" Width="1.5" PointX="10.75" PointY="2.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Program_studiów" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Przedmiot" Width="1.5" PointX="10.75" PointY="5.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Przedmiotowy_efekt_kształcenia" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Rodzaj_przedmiotu" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Semestr" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Temat_zajęć" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Treść_programowa" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Typ_literatury" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Typ_oceny" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Wydział" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Wymaganie_wstępne" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Zakres_PEK" Width="1.5" PointX="12.75" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

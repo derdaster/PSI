@@ -26,5 +26,36 @@ namespace Model.Data
         }
     
         public virtual DbSet<Karta_przedmiotu> Karta_przedmiotu { get; set; }
+        public virtual DbSet<Autor_karty_przedmiotu> Autor_karty_przedmiotu { get; set; }
+        public virtual DbSet<Cel_przedmiotu> Cel_przedmiotu { get; set; }
+        public virtual DbSet<Forma_studiów> Forma_studiów { get; set; }
+        public virtual DbSet<Forma_zajęć> Forma_zajęć { get; set; }
+        public virtual DbSet<Grupa_kursów> Grupa_kursów { get; set; }
+        public virtual DbSet<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu { get; set; }
+        public virtual DbSet<Kierunek> Kierunek { get; set; }
+        public virtual DbSet<Kierunkowy_efekt_kształcenia> Kierunkowy_efekt_kształcenia { get; set; }
+        public virtual DbSet<Kurs> Kurs { get; set; }
+        public virtual DbSet<Literatura> Literatura { get; set; }
+        public virtual DbSet<Ministerialny_efekt_kształcenia> Ministerialny_efekt_kształcenia { get; set; }
+        public virtual DbSet<Moduł_kształcenia> Moduł_kształcenia { get; set; }
+        public virtual DbSet<Narzędzia_dydaktyczne> Narzędzia_dydaktyczne { get; set; }
+        public virtual DbSet<Obszar_kształcenia> Obszar_kształcenia { get; set; }
+        public virtual DbSet<Ocena_osiągnięć> Ocena_osiągnięć { get; set; }
+        public virtual DbSet<Plan_studiów> Plan_studiów { get; set; }
+        public virtual DbSet<Poziom_kształcenia> Poziom_kształcenia { get; set; }
+        public virtual DbSet<Profil_kształcenia> Profil_kształcenia { get; set; }
+        public virtual DbSet<Program_kształcenia> Program_kształcenia { get; set; }
+        public virtual DbSet<Program_studiów> Program_studiów { get; set; }
+        public virtual DbSet<Przedmiot> Przedmiot { get; set; }
+        public virtual DbSet<Przedmiotowy_efekt_kształcenia> Przedmiotowy_efekt_kształcenia { get; set; }
+        public virtual DbSet<Rodzaj_przedmiotu> Rodzaj_przedmiotu { get; set; }
+        public virtual DbSet<Semestr> Semestr { get; set; }
+        public virtual DbSet<Temat_zajęć> Temat_zajęć { get; set; }
+        public virtual DbSet<Treść_programowa> Treść_programowa { get; set; }
+        public virtual DbSet<Typ_literatury> Typ_literatury { get; set; }
+        public virtual DbSet<Typ_oceny> Typ_oceny { get; set; }
+        public virtual DbSet<Wydział> Wydział { get; set; }
+        public virtual DbSet<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
+        public virtual DbSet<Zakres_PEK> Zakres_PEK { get; set; }
     }
 }

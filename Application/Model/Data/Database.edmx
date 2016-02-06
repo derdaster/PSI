@@ -4,7 +4,49 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EasyKRKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EasyKRKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autor karty przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imię" Type="varchar" MaxLength="255" />
+          <Property Name="Nazwisko" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Cel przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Forma studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Stacjonarna" Type="int" />
+          <Property Name="Niestacjonarna" Type="int" />
+        </EntityType>
+        <EntityType Name="Forma zajęć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wykład" Type="int" />
+          <Property Name="Ćwiczenia" Type="int" />
+          <Property Name="Laboratorium" Type="int" />
+          <Property Name="Projekt" Type="int" />
+          <Property Name="Seminarium" Type="int" />
+        </EntityType>
+        <EntityType Name="Grupa kursów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ECTS" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Karta przedmiotu">
           <Key>
             <PropertyRef Name="ID" />
@@ -15,11 +57,247 @@
           <Property Name="GrupaKursów" Type="bit" Nullable="false" />
           <Property Name="RodzajPrzedmiotu" Type="int" />
         </EntityType>
+        <EntityType Name="Karta przedmiotu_Autor karty przedmiotu">
+          <Key>
+            <PropertyRef Name="Karta przedmiotuID" />
+            <PropertyRef Name="Autor karty przedmiotuID" />
+          </Key>
+          <Property Name="Karta przedmiotuID" Type="int" Nullable="false" />
+          <Property Name="Autor karty przedmiotuID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kierunek">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WydziałID" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Kierunkowy efekt kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grupa kursówID" Type="int" />
+          <Property Name="PrzedmiotID" Type="int" Nullable="false" />
+          <Property Name="ECTS" Type="int" Nullable="false" />
+          <Property Name="LiczbaGodzin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Literatura">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Typ" Type="int" />
+        </EntityType>
+        <EntityType Name="Ministerialny efekt kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoziomKształcenia" Type="int" />
+          <Property Name="ProfilKształcenia" Type="int" />
+        </EntityType>
+        <EntityType Name="Moduł kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Narzędzia dydaktyczne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="255" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Obszar kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocena osiągnięć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Sposób" Type="varchar" MaxLength="255" />
+          <Property Name="Typ" Type="int" />
+        </EntityType>
+        <EntityType Name="Plan studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Poziom kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="I" Type="int" />
+          <Property Name="II" Type="int" />
+        </EntityType>
+        <EntityType Name="Profil kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Akademicki" Type="int" />
+          <Property Name="Praktyczny" Type="int" />
+        </EntityType>
+        <EntityType Name="Program kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoziomKształcenia" Type="int" />
+          <Property Name="ProfilKształcenia" Type="int" />
+          <Property Name="FormaStudiów" Type="int" />
+          <Property Name="Język" Type="varchar" MaxLength="255" />
+          <Property Name="Specjalność" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Program studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Przedmiot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grupa kursówID" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Kod" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Przedmiotowy efekt kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrzedmiotID" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+          <Property Name="Zakres" Type="int" />
+          <Property Name="Kod" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Rodzaj przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Obowiązkowy" Type="int" />
+          <Property Name="Wybieralny" Type="int" />
+          <Property Name="Ogólnouczelniany" Type="int" />
+        </EntityType>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plan studiówID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temat zajęć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumerZajęć" Type="varchar" MaxLength="255" />
+          <Property Name="Temat" Type="varchar" MaxLength="255" />
+          <Property Name="LiczbaGodzin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treść programowa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormaZajeć" Type="int" />
+        </EntityType>
+        <EntityType Name="Typ literatury">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Podstawowa" Type="int" />
+          <Property Name="Uzupełniająca" Type="int" />
+        </EntityType>
+        <EntityType Name="Typ oceny">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Formująca" Type="int" />
+          <Property Name="Podsumowująca" Type="int" />
+        </EntityType>
+        <EntityType Name="Wydział">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Wymaganie wstępne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Zakres PEK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Wiedza" Type="int" />
+          <Property Name="Umiejętność" Type="int" />
+          <Property Name="Kompetencji" Type="int" />
+        </EntityType>
         <EntityContainer Name="EasyKRKModelStoreContainer">
+          <EntitySet Name="Autor karty przedmiotu" EntityType="Self.Autor karty przedmiotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cel przedmiotu" EntityType="Self.Cel przedmiotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forma studiów" EntityType="Self.Forma studiów" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forma zajęć" EntityType="Self.Forma zajęć" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grupa kursów" EntityType="Self.Grupa kursów" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Karta przedmiotu" EntityType="Self.Karta przedmiotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karta przedmiotu_Autor karty przedmiotu" EntityType="Self.Karta przedmiotu_Autor karty przedmiotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kierunek" EntityType="Self.Kierunek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kierunkowy efekt kształcenia" EntityType="Self.Kierunkowy efekt kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurs" EntityType="Self.Kurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Literatura" EntityType="Self.Literatura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ministerialny efekt kształcenia" EntityType="Self.Ministerialny efekt kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Moduł kształcenia" EntityType="Self.Moduł kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Narzędzia dydaktyczne" EntityType="Self.Narzędzia dydaktyczne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Obszar kształcenia" EntityType="Self.Obszar kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocena osiągnięć" EntityType="Self.Ocena osiągnięć" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan studiów" EntityType="Self.Plan studiów" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Poziom kształcenia" EntityType="Self.Poziom kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profil kształcenia" EntityType="Self.Profil kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program kształcenia" EntityType="Self.Program kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program studiów" EntityType="Self.Program studiów" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Przedmiot" EntityType="Self.Przedmiot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Przedmiotowy efekt kształcenia" EntityType="Self.Przedmiotowy efekt kształcenia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rodzaj przedmiotu" EntityType="Self.Rodzaj przedmiotu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Semestr" EntityType="Self.Semestr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Temat zajęć" EntityType="Self.Temat zajęć" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treść programowa" EntityType="Self.Treść programowa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typ literatury" EntityType="Self.Typ literatury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Typ oceny" EntityType="Self.Typ oceny" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wydział" EntityType="Self.Wydział" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wymaganie wstępne" EntityType="Self.Wymaganie wstępne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakres PEK" EntityType="Self.Zakres PEK" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EasyKRKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +313,286 @@
         </EntityType>
         <EntityContainer Name="DbEasyKRK" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Karta_przedmiotu" EntityType="Self.Karta_przedmiotu" />
+          <EntitySet Name="Autor_karty_przedmiotu" EntityType="EasyKRKModel.Autor_karty_przedmiotu" />
+          <EntitySet Name="Cel_przedmiotu" EntityType="EasyKRKModel.Cel_przedmiotu" />
+          <EntitySet Name="Forma_studiów" EntityType="EasyKRKModel.Forma_studiów" />
+          <EntitySet Name="Forma_zajęć" EntityType="EasyKRKModel.Forma_zajęć" />
+          <EntitySet Name="Grupa_kursów" EntityType="EasyKRKModel.Grupa_kursów" />
+          <EntitySet Name="Karta_przedmiotu_Autor_karty_przedmiotu" EntityType="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" />
+          <EntitySet Name="Kierunek" EntityType="EasyKRKModel.Kierunek" />
+          <EntitySet Name="Kierunkowy_efekt_kształcenia" EntityType="EasyKRKModel.Kierunkowy_efekt_kształcenia" />
+          <EntitySet Name="Kurs" EntityType="EasyKRKModel.Kurs" />
+          <EntitySet Name="Literatura" EntityType="EasyKRKModel.Literatura" />
+          <EntitySet Name="Ministerialny_efekt_kształcenia" EntityType="EasyKRKModel.Ministerialny_efekt_kształcenia" />
+          <EntitySet Name="Moduł_kształcenia" EntityType="EasyKRKModel.Moduł_kształcenia" />
+          <EntitySet Name="Narzędzia_dydaktyczne" EntityType="EasyKRKModel.Narzędzia_dydaktyczne" />
+          <EntitySet Name="Obszar_kształcenia" EntityType="EasyKRKModel.Obszar_kształcenia" />
+          <EntitySet Name="Ocena_osiągnięć" EntityType="EasyKRKModel.Ocena_osiągnięć" />
+          <EntitySet Name="Plan_studiów" EntityType="EasyKRKModel.Plan_studiów" />
+          <EntitySet Name="Poziom_kształcenia" EntityType="EasyKRKModel.Poziom_kształcenia" />
+          <EntitySet Name="Profil_kształcenia" EntityType="EasyKRKModel.Profil_kształcenia" />
+          <EntitySet Name="Program_kształcenia" EntityType="EasyKRKModel.Program_kształcenia" />
+          <EntitySet Name="Program_studiów" EntityType="EasyKRKModel.Program_studiów" />
+          <EntitySet Name="Przedmiot" EntityType="EasyKRKModel.Przedmiot" />
+          <EntitySet Name="Przedmiotowy_efekt_kształcenia" EntityType="EasyKRKModel.Przedmiotowy_efekt_kształcenia" />
+          <EntitySet Name="Rodzaj_przedmiotu" EntityType="EasyKRKModel.Rodzaj_przedmiotu" />
+          <EntitySet Name="Semestr" EntityType="EasyKRKModel.Semestr" />
+          <EntitySet Name="Temat_zajęć" EntityType="EasyKRKModel.Temat_zajęć" />
+          <EntitySet Name="Treść_programowa" EntityType="EasyKRKModel.Treść_programowa" />
+          <EntitySet Name="Typ_literatury" EntityType="EasyKRKModel.Typ_literatury" />
+          <EntitySet Name="Typ_oceny" EntityType="EasyKRKModel.Typ_oceny" />
+          <EntitySet Name="Wydział" EntityType="EasyKRKModel.Wydział" />
+          <EntitySet Name="Wymaganie_wstępne" EntityType="EasyKRKModel.Wymaganie_wstępne" />
+          <EntitySet Name="Zakres_PEK" EntityType="EasyKRKModel.Zakres_PEK" />
         </EntityContainer>
+        <EntityType Name="Autor_karty_przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imię" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cel_przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Forma_studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stacjonarna" Type="Int32" />
+          <Property Name="Niestacjonarna" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Forma_zajęć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wykład" Type="Int32" />
+          <Property Name="Ćwiczenia" Type="Int32" />
+          <Property Name="Laboratorium" Type="Int32" />
+          <Property Name="Projekt" Type="Int32" />
+          <Property Name="Seminarium" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Grupa_kursów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ECTS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Karta_przedmiotu_Autor_karty_przedmiotu">
+          <Key>
+            <PropertyRef Name="Karta_przedmiotuID" />
+            <PropertyRef Name="Autor_karty_przedmiotuID" />
+          </Key>
+          <Property Name="Karta_przedmiotuID" Type="Int32" Nullable="false" />
+          <Property Name="Autor_karty_przedmiotuID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kierunek">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WydziałID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Kierunkowy_efekt_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Kurs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grupa_kursówID" Type="Int32" />
+          <Property Name="PrzedmiotID" Type="Int32" Nullable="false" />
+          <Property Name="ECTS" Type="Int32" Nullable="false" />
+          <Property Name="LiczbaGodzin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Literatura">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Typ" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ministerialny_efekt_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoziomKształcenia" Type="Int32" />
+          <Property Name="ProfilKształcenia" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Moduł_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Narzędzia_dydaktyczne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Obszar_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Ocena_osiągnięć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Sposób" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Typ" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Plan_studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Poziom_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="I" Type="Int32" />
+          <Property Name="II" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Profil_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Akademicki" Type="Int32" />
+          <Property Name="Praktyczny" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Program_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoziomKształcenia" Type="Int32" />
+          <Property Name="ProfilKształcenia" Type="Int32" />
+          <Property Name="FormaStudiów" Type="Int32" />
+          <Property Name="Język" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Specjalność" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Program_studiów">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Przedmiot">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grupa_kursówID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Kod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Przedmiotowy_efekt_kształcenia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrzedmiotID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Zakres" Type="Int32" />
+          <Property Name="Kod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rodzaj_przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Obowiązkowy" Type="Int32" />
+          <Property Name="Wybieralny" Type="Int32" />
+          <Property Name="Ogólnouczelniany" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Semestr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plan_studiówID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Temat_zajęć">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumerZajęć" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Temat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LiczbaGodzin" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treść_programowa">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormaZajeć" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Typ_literatury">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Podstawowa" Type="Int32" />
+          <Property Name="Uzupełniająca" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Typ_oceny">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Formująca" Type="Int32" />
+          <Property Name="Podsumowująca" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Wydział">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Wymaganie_wstępne">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Zakres_PEK">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Wiedza" Type="Int32" />
+          <Property Name="Umiejętność" Type="Int32" />
+          <Property Name="Kompetencji" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +607,284 @@
                 <ScalarProperty Name="NazwaAngielska" ColumnName="NazwaAngielska" />
                 <ScalarProperty Name="GrupaKursów" ColumnName="GrupaKursów" />
                 <ScalarProperty Name="RodzajPrzedmiotu" ColumnName="RodzajPrzedmiotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Autor_karty_przedmiotu">
+            <EntityTypeMapping TypeName="EasyKRKModel.Autor_karty_przedmiotu">
+              <MappingFragment StoreEntitySet="Autor karty przedmiotu">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imię" ColumnName="Imię" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cel_przedmiotu">
+            <EntityTypeMapping TypeName="EasyKRKModel.Cel_przedmiotu">
+              <MappingFragment StoreEntitySet="Cel przedmiotu">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forma_studiów">
+            <EntityTypeMapping TypeName="EasyKRKModel.Forma_studiów">
+              <MappingFragment StoreEntitySet="Forma studiów">
+                <ScalarProperty Name="Niestacjonarna" ColumnName="Niestacjonarna" />
+                <ScalarProperty Name="Stacjonarna" ColumnName="Stacjonarna" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forma_zajęć">
+            <EntityTypeMapping TypeName="EasyKRKModel.Forma_zajęć">
+              <MappingFragment StoreEntitySet="Forma zajęć">
+                <ScalarProperty Name="Seminarium" ColumnName="Seminarium" />
+                <ScalarProperty Name="Projekt" ColumnName="Projekt" />
+                <ScalarProperty Name="Laboratorium" ColumnName="Laboratorium" />
+                <ScalarProperty Name="Ćwiczenia" ColumnName="Ćwiczenia" />
+                <ScalarProperty Name="Wykład" ColumnName="Wykład" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grupa_kursów">
+            <EntityTypeMapping TypeName="EasyKRKModel.Grupa_kursów">
+              <MappingFragment StoreEntitySet="Grupa kursów">
+                <ScalarProperty Name="ECTS" ColumnName="ECTS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karta_przedmiotu_Autor_karty_przedmiotu">
+            <EntityTypeMapping TypeName="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu">
+              <MappingFragment StoreEntitySet="Karta przedmiotu_Autor karty przedmiotu">
+                <ScalarProperty Name="Autor_karty_przedmiotuID" ColumnName="Autor karty przedmiotuID" />
+                <ScalarProperty Name="Karta_przedmiotuID" ColumnName="Karta przedmiotuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kierunek">
+            <EntityTypeMapping TypeName="EasyKRKModel.Kierunek">
+              <MappingFragment StoreEntitySet="Kierunek">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="WydziałID" ColumnName="WydziałID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kierunkowy_efekt_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Kierunkowy_efekt_kształcenia">
+              <MappingFragment StoreEntitySet="Kierunkowy efekt kształcenia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurs">
+            <EntityTypeMapping TypeName="EasyKRKModel.Kurs">
+              <MappingFragment StoreEntitySet="Kurs">
+                <ScalarProperty Name="LiczbaGodzin" ColumnName="LiczbaGodzin" />
+                <ScalarProperty Name="ECTS" ColumnName="ECTS" />
+                <ScalarProperty Name="PrzedmiotID" ColumnName="PrzedmiotID" />
+                <ScalarProperty Name="Grupa_kursówID" ColumnName="Grupa kursówID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Literatura">
+            <EntityTypeMapping TypeName="EasyKRKModel.Literatura">
+              <MappingFragment StoreEntitySet="Literatura">
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ministerialny_efekt_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Ministerialny_efekt_kształcenia">
+              <MappingFragment StoreEntitySet="Ministerialny efekt kształcenia">
+                <ScalarProperty Name="ProfilKształcenia" ColumnName="ProfilKształcenia" />
+                <ScalarProperty Name="PoziomKształcenia" ColumnName="PoziomKształcenia" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Moduł_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Moduł_kształcenia">
+              <MappingFragment StoreEntitySet="Moduł kształcenia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Narzędzia_dydaktyczne">
+            <EntityTypeMapping TypeName="EasyKRKModel.Narzędzia_dydaktyczne">
+              <MappingFragment StoreEntitySet="Narzędzia dydaktyczne">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Obszar_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Obszar_kształcenia">
+              <MappingFragment StoreEntitySet="Obszar kształcenia">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocena_osiągnięć">
+            <EntityTypeMapping TypeName="EasyKRKModel.Ocena_osiągnięć">
+              <MappingFragment StoreEntitySet="Ocena osiągnięć">
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Sposób" ColumnName="Sposób" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan_studiów">
+            <EntityTypeMapping TypeName="EasyKRKModel.Plan_studiów">
+              <MappingFragment StoreEntitySet="Plan studiów">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Poziom_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Poziom_kształcenia">
+              <MappingFragment StoreEntitySet="Poziom kształcenia">
+                <ScalarProperty Name="II" ColumnName="II" />
+                <ScalarProperty Name="I" ColumnName="I" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profil_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Profil_kształcenia">
+              <MappingFragment StoreEntitySet="Profil kształcenia">
+                <ScalarProperty Name="Praktyczny" ColumnName="Praktyczny" />
+                <ScalarProperty Name="Akademicki" ColumnName="Akademicki" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Program_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Program_kształcenia">
+              <MappingFragment StoreEntitySet="Program kształcenia">
+                <ScalarProperty Name="Specjalność" ColumnName="Specjalność" />
+                <ScalarProperty Name="Język" ColumnName="Język" />
+                <ScalarProperty Name="FormaStudiów" ColumnName="FormaStudiów" />
+                <ScalarProperty Name="ProfilKształcenia" ColumnName="ProfilKształcenia" />
+                <ScalarProperty Name="PoziomKształcenia" ColumnName="PoziomKształcenia" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Program_studiów">
+            <EntityTypeMapping TypeName="EasyKRKModel.Program_studiów">
+              <MappingFragment StoreEntitySet="Program studiów">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przedmiot">
+            <EntityTypeMapping TypeName="EasyKRKModel.Przedmiot">
+              <MappingFragment StoreEntitySet="Przedmiot">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Grupa_kursówID" ColumnName="Grupa kursówID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Przedmiotowy_efekt_kształcenia">
+            <EntityTypeMapping TypeName="EasyKRKModel.Przedmiotowy_efekt_kształcenia">
+              <MappingFragment StoreEntitySet="Przedmiotowy efekt kształcenia">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Zakres" ColumnName="Zakres" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="PrzedmiotID" ColumnName="PrzedmiotID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rodzaj_przedmiotu">
+            <EntityTypeMapping TypeName="EasyKRKModel.Rodzaj_przedmiotu">
+              <MappingFragment StoreEntitySet="Rodzaj przedmiotu">
+                <ScalarProperty Name="Ogólnouczelniany" ColumnName="Ogólnouczelniany" />
+                <ScalarProperty Name="Wybieralny" ColumnName="Wybieralny" />
+                <ScalarProperty Name="Obowiązkowy" ColumnName="Obowiązkowy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Semestr">
+            <EntityTypeMapping TypeName="EasyKRKModel.Semestr">
+              <MappingFragment StoreEntitySet="Semestr">
+                <ScalarProperty Name="Plan_studiówID" ColumnName="Plan studiówID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temat_zajęć">
+            <EntityTypeMapping TypeName="EasyKRKModel.Temat_zajęć">
+              <MappingFragment StoreEntitySet="Temat zajęć">
+                <ScalarProperty Name="LiczbaGodzin" ColumnName="LiczbaGodzin" />
+                <ScalarProperty Name="Temat" ColumnName="Temat" />
+                <ScalarProperty Name="NumerZajęć" ColumnName="NumerZajęć" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treść_programowa">
+            <EntityTypeMapping TypeName="EasyKRKModel.Treść_programowa">
+              <MappingFragment StoreEntitySet="Treść programowa">
+                <ScalarProperty Name="FormaZajeć" ColumnName="FormaZajeć" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typ_literatury">
+            <EntityTypeMapping TypeName="EasyKRKModel.Typ_literatury">
+              <MappingFragment StoreEntitySet="Typ literatury">
+                <ScalarProperty Name="Uzupełniająca" ColumnName="Uzupełniająca" />
+                <ScalarProperty Name="Podstawowa" ColumnName="Podstawowa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Typ_oceny">
+            <EntityTypeMapping TypeName="EasyKRKModel.Typ_oceny">
+              <MappingFragment StoreEntitySet="Typ oceny">
+                <ScalarProperty Name="Podsumowująca" ColumnName="Podsumowująca" />
+                <ScalarProperty Name="Formująca" ColumnName="Formująca" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wydział">
+            <EntityTypeMapping TypeName="EasyKRKModel.Wydział">
+              <MappingFragment StoreEntitySet="Wydział">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wymaganie_wstępne">
+            <EntityTypeMapping TypeName="EasyKRKModel.Wymaganie_wstępne">
+              <MappingFragment StoreEntitySet="Wymaganie wstępne">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakres_PEK">
+            <EntityTypeMapping TypeName="EasyKRKModel.Zakres_PEK">
+              <MappingFragment StoreEntitySet="Zakres PEK">
+                <ScalarProperty Name="Kompetencji" ColumnName="Kompetencji" />
+                <ScalarProperty Name="Umiejętność" ColumnName="Umiejętność" />
+                <ScalarProperty Name="Wiedza" ColumnName="Wiedza" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,10 +14,28 @@ namespace Model.Data
     
     public partial class Karta_przedmiotu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Karta_przedmiotu()
+        {
+            this.Cel_przedmiotu = new HashSet<Cel_przedmiotu>();
+            this.Wymaganie_wstępne = new HashSet<Wymaganie_wstępne>();
+            this.Karta_przedmiotu_Autor_karty_przedmiotu = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
+            this.Treść_programowa = new HashSet<Treść_programowa>();
+        }
+    
         public int ID { get; set; }
         public string NazwaPolska { get; set; }
         public string NazwaAngielska { get; set; }
         public bool GrupaKursów { get; set; }
         public Nullable<int> RodzajPrzedmiotu { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cel_przedmiotu> Cel_przedmiotu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Treść_programowa> Treść_programowa { get; set; }
     }
 }

@@ -310,6 +310,10 @@
           <Property Name="NazwaAngielska" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="GrupaKursów" Type="Boolean" Nullable="false" />
           <Property Name="RodzajPrzedmiotu" Type="Int32" />
+          <NavigationProperty Name="Cel_przedmiotu" Relationship="EasyKRKModel.Cel_przedmiotuKarta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Cel_przedmiotu" />
+          <NavigationProperty Name="Wymaganie_wstępne" Relationship="EasyKRKModel.Karta_przedmiotuWymaganie_wstępne" FromRole="Karta_przedmiotu" ToRole="Wymaganie_wstępne" />
+          <NavigationProperty Name="Karta_przedmiotu_Autor_karty_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotuKarta_przedmiotu_Autor_karty_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Karta_przedmiotu_Autor_karty_przedmiotu" />
+          <NavigationProperty Name="Treść_programowa" Relationship="EasyKRKModel.Treść_programowaKarta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Treść_programowa" />
         </EntityType>
         <EntityContainer Name="DbEasyKRK" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Karta_przedmiotu" EntityType="Self.Karta_przedmiotu" />
@@ -344,6 +348,30 @@
           <EntitySet Name="Wydział" EntityType="EasyKRKModel.Wydział" />
           <EntitySet Name="Wymaganie_wstępne" EntityType="EasyKRKModel.Wymaganie_wstępne" />
           <EntitySet Name="Zakres_PEK" EntityType="EasyKRKModel.Zakres_PEK" />
+          <AssociationSet Name="Cel_przedmiotuKarta_przedmiotu" Association="EasyKRKModel.Cel_przedmiotuKarta_przedmiotu">
+            <End Role="Cel_przedmiotu" EntitySet="Cel_przedmiotu" />
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+          </AssociationSet>
+          <AssociationSet Name="Karta_przedmiotuWymaganie_wstępne" Association="EasyKRKModel.Karta_przedmiotuWymaganie_wstępne">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Wymaganie_wstępne" EntitySet="Wymaganie_wstępne" />
+          </AssociationSet>
+          <AssociationSet Name="Karta_przedmiotuKarta_przedmiotu_Autor_karty_przedmiotu" Association="EasyKRKModel.Karta_przedmiotuKarta_przedmiotu_Autor_karty_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Karta_przedmiotu_Autor_karty_przedmiotu" EntitySet="Karta_przedmiotu_Autor_karty_przedmiotu" />
+          </AssociationSet>
+          <AssociationSet Name="Karta_przedmiotu_Autor_karty_przedmiotuAutor_karty_przedmiotu" Association="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotuAutor_karty_przedmiotu">
+            <End Role="Karta_przedmiotu_Autor_karty_przedmiotu" EntitySet="Karta_przedmiotu_Autor_karty_przedmiotu" />
+            <End Role="Autor_karty_przedmiotu" EntitySet="Autor_karty_przedmiotu" />
+          </AssociationSet>
+          <AssociationSet Name="Treść_programowaTemat_zajęć" Association="EasyKRKModel.Treść_programowaTemat_zajęć">
+            <End Role="Treść_programowa" EntitySet="Treść_programowa" />
+            <End Role="Temat_zajęć" EntitySet="Temat_zajęć" />
+          </AssociationSet>
+          <AssociationSet Name="Treść_programowaKarta_przedmiotu" Association="EasyKRKModel.Treść_programowaKarta_przedmiotu">
+            <End Role="Treść_programowa" EntitySet="Treść_programowa" />
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Autor_karty_przedmiotu">
           <Key>
@@ -353,6 +381,7 @@
           <Property Name="Imię" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Karta_przedmiotu_Autor_karty_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotuAutor_karty_przedmiotu" FromRole="Autor_karty_przedmiotu" ToRole="Karta_przedmiotu_Autor_karty_przedmiotu" />
         </EntityType>
         <EntityType Name="Cel_przedmiotu">
           <Key>
@@ -360,6 +389,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.Cel_przedmiotuKarta_przedmiotu" FromRole="Cel_przedmiotu" ToRole="Karta_przedmiotu" />
+          <Property Name="Karta_przedmiotuID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Forma_studiów">
           <Key>
@@ -394,6 +425,8 @@
           </Key>
           <Property Name="Karta_przedmiotuID" Type="Int32" Nullable="false" />
           <Property Name="Autor_karty_przedmiotuID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotuKarta_przedmiotu_Autor_karty_przedmiotu" FromRole="Karta_przedmiotu_Autor_karty_przedmiotu" ToRole="Karta_przedmiotu" />
+          <NavigationProperty Name="Autor_karty_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotuAutor_karty_przedmiotu" FromRole="Karta_przedmiotu_Autor_karty_przedmiotu" ToRole="Autor_karty_przedmiotu" />
         </EntityType>
         <EntityType Name="Kierunek">
           <Key>
@@ -546,6 +579,8 @@
           <Property Name="NumerZajęć" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Temat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="LiczbaGodzin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Treść_programowa" Relationship="EasyKRKModel.Treść_programowaTemat_zajęć" FromRole="Temat_zajęć" ToRole="Treść_programowa" />
+          <Property Name="Treść_programowaID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Treść_programowa">
           <Key>
@@ -553,6 +588,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FormaZajeć" Type="Int32" />
+          <NavigationProperty Name="Temat_zajęć" Relationship="EasyKRKModel.Treść_programowaTemat_zajęć" FromRole="Treść_programowa" ToRole="Temat_zajęć" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.Treść_programowaKarta_przedmiotu" FromRole="Treść_programowa" ToRole="Karta_przedmiotu" />
+          <Property Name="Karta_przedmiotuID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Typ_literatury">
           <Key>
@@ -583,6 +621,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotuWymaganie_wstępne" FromRole="Wymaganie_wstępne" ToRole="Karta_przedmiotu" />
         </EntityType>
         <EntityType Name="Zakres_PEK">
           <Key>
@@ -593,6 +632,54 @@
           <Property Name="Umiejętność" Type="Int32" />
           <Property Name="Kompetencji" Type="Int32" />
         </EntityType>
+        <Association Name="Cel_przedmiotuKarta_przedmiotu">
+          <End Type="EasyKRKModel.Cel_przedmiotu" Role="Cel_przedmiotu" Multiplicity="*" />
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cel_przedmiotu">
+              <PropertyRef Name="Karta_przedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Karta_przedmiotuWymaganie_wstępne">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="1" />
+          <End Type="EasyKRKModel.Wymaganie_wstępne" Role="Wymaganie_wstępne" Multiplicity="*" />
+        </Association>
+        <Association Name="Karta_przedmiotuKarta_przedmiotu_Autor_karty_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="1" />
+          <End Type="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" Role="Karta_przedmiotu_Autor_karty_przedmiotu" Multiplicity="*" />
+        </Association>
+        <Association Name="Karta_przedmiotu_Autor_karty_przedmiotuAutor_karty_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" Role="Karta_przedmiotu_Autor_karty_przedmiotu" Multiplicity="*" />
+          <End Type="EasyKRKModel.Autor_karty_przedmiotu" Role="Autor_karty_przedmiotu" Multiplicity="1" />
+        </Association>
+        <Association Name="Treść_programowaTemat_zajęć">
+          <End Type="EasyKRKModel.Treść_programowa" Role="Treść_programowa" Multiplicity="1" />
+          <End Type="EasyKRKModel.Temat_zajęć" Role="Temat_zajęć" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treść_programowa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Temat_zajęć">
+              <PropertyRef Name="Treść_programowaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Treść_programowaKarta_przedmiotu">
+          <End Type="EasyKRKModel.Treść_programowa" Role="Treść_programowa" Multiplicity="*" />
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treść_programowa">
+              <PropertyRef Name="Karta_przedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

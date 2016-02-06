@@ -14,7 +14,18 @@ namespace Model.Data
     
     public partial class Treść_programowa
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Treść_programowa()
+        {
+            this.Temat_zajęć = new HashSet<Temat_zajęć>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> FormaZajeć { get; set; }
+        public int Karta_przedmiotuID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Temat_zajęć> Temat_zajęć { get; set; }
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
     }
 }

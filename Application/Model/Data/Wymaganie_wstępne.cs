@@ -16,5 +16,7 @@ namespace Model.Data
     {
         public int ID { get; set; }
         public string Nazwa { get; set; }
+    
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
     }
 }

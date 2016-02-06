@@ -16,5 +16,8 @@ namespace Model.Data
     {
         public int Karta_przedmiotuID { get; set; }
         public int Autor_karty_przedmiotuID { get; set; }
+    
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
+        public virtual Autor_karty_przedmiotu Autor_karty_przedmiotu { get; set; }
     }
 }

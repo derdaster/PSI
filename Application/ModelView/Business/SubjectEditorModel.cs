@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace ModelView.Business
@@ -53,13 +54,15 @@ namespace ModelView.Business
 
         private string _NazwaPrzedmiotuPl;
         private string _NazwaPrzedmiotuAng;
-        private string _Wydział;
-        private string _KierunekStudiów;
         private string _Specjalność;
         private string _KodPrzedmiotu;
         private string _Imię;
         private string _Nazwisko;
         private string _AdresEmail;
+        private CollectionView _WydziałList;
+        private int _WydziałSelected;
+        private CollectionView _KierunekList;
+        private int _KierunekSelected;
 
 
         public string NazwaPrzedmiotuPl
@@ -86,29 +89,45 @@ namespace ModelView.Business
         }
 
 
-        public string Wydział
+        public CollectionView WydziałList
         {
-            get { return _Wydział; }
+            get { return _WydziałList; }
+        }
+
+        public int WydziałSelected
+        {
+            get { return _WydziałSelected; }
             set
             {
-                if (value == _Wydział) return;
-                _Wydział = value;
-                OnPropertyChanged("Wydział");
+                if (value == _WydziałSelected) return;
+                _WydziałSelected = value;
+                OnPropertyChanged("WydziałSelected");
+                OnWydziałChanged();
             }
         }
 
-
-        public string KierunekStudiów
+        private void OnWydziałChanged()
         {
-            get { return _KierunekStudiów; }
-            set
-            {
-                if (value == _KierunekStudiów) return;
-                _KierunekStudiów = value;
-                OnPropertyChanged("KierunekStudiów");
-            }
+            _KierunekList = new CollectionView(DbManager.GetKierunek(WydziałSelected));
+            OnPropertyChanged("KierunekList");
         }
 
+        public CollectionView KierunekList
+        {
+            get { return _KierunekList; }
+        }
+
+        public int KierunekSelected
+        {
+            get { return _KierunekSelected; }
+            set
+            {
+                if (value == _KierunekSelected) return;
+                _KierunekSelected = value;
+                OnPropertyChanged("KierunekSelected");
+            }
+        }
+        
 
         public string Specjalność
         {
@@ -168,20 +187,24 @@ namespace ModelView.Business
                 OnPropertyChanged("AdresEmail");
             }
         }
-		
-		
+
+
 
         #endregion
 
         public SubjectEditorModel()
         {
             SaveCmd = new RelayCommand(par => Save());
-
+            Init();
         }
 
-        private void Save()
+        private void Init()
         {
+            _WydziałList = new CollectionView(DbManager.GetWydział());
+        }
 
+        public void Save()
+        {
             MessageBox.Show("Dodano kartę przedmiotu");
         }
 

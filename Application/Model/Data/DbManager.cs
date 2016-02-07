@@ -15,5 +15,21 @@ namespace Model.Data
                 return ctx.Użytkownik.Where(x => x.Login.Equals(login) && x.Hasło.Equals(password)).Any();
             }
         }
+
+        public static List<Wydział> GetWydział()
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Wydział.ToList();
+            }
+        }
+
+        public static List<Kierunek> GetKierunek(int idWydział)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Kierunek.Where(x => x.WydziałID == idWydział).ToList();
+            }
+        }
     }
 }

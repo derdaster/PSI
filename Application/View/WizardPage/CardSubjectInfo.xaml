@@ -38,13 +38,21 @@
         <TextBox Text="{Binding NazwaPrzedmiotuAng}" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  />
 
         <Label Content="Wydział" Grid.Row="3"/>
-        <ComboBox Text="{Binding Wydział}" Grid.Row="3" Grid.Column="1" />
+        <ComboBox Grid.Row="3" Grid.Column="1" 
+                  ItemsSource="{Binding Path=WydziałList}" 
+                  DisplayMemberPath="Nazwa" 
+                  SelectedValuePath="ID" 
+                  SelectedValue="{Binding Path=WydziałSelected}" />
 
         <Label Content="Kierunek studiów" Grid.Row="4" />
-        <ComboBox Text="{Binding KierunekStudiów}" Grid.Row="4" Grid.Column="1"  />
+        <ComboBox Grid.Row="4" Grid.Column="1" 
+                  ItemsSource="{Binding Path=KierunekList}" 
+                  DisplayMemberPath="Nazwa" 
+                  SelectedValuePath="ID" 
+                  SelectedValue="{Binding Path=KierunekSelected}"/>
 
         <Label Content="Specjalność" Grid.Row="5" />
-        <TextBox Text="{Binding Specjalność}" Grid.Row="5" Grid.Column="1"  />
+        <TextBox Text="{Binding Specjalność}" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" />
 
         <Label Content="Stopień studiów" Grid.Row="6" />
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal" >
@@ -66,7 +74,7 @@
         </StackPanel>
 
         <Label Content="Kod przedmiotu" Grid.Row="9"  />
-        <TextBox Text="{Binding KodPrzedmiotu}" Grid.Row="9" Grid.Column="1" />
+        <TextBox Text="{Binding KodPrzedmiotu}" Grid.Row="9" Grid.Column="1" VerticalContentAlignment="Center" />
 
         <Label Content="Grupa kursów" Grid.Row="10"  />
         <StackPanel Grid.Column="1" Grid.Row="10" Orientation="Horizontal" >
@@ -77,13 +85,13 @@
         <Label Content="Opiekun przedmiotu" Grid.Row="12"  FontWeight="Bold" />
 
         <Label Content="Imię" Grid.Row="13" />
-        <TextBox Text="{Binding Imię}" Grid.Row="13" Grid.Column="1" />
+        <TextBox Text="{Binding Imię}" Grid.Row="13" Grid.Column="1" VerticalContentAlignment="Center"/>
 
         <Label Content="Nazwisko" Grid.Row="14" />
-        <TextBox Text="{Binding Nazwisko}" Grid.Row="14" Grid.Column="1" />
+        <TextBox Text="{Binding Nazwisko}" Grid.Row="14" Grid.Column="1" VerticalContentAlignment="Center"/>
 
         <Label Content="Adres e-mail" Grid.Row="15" />
-        <TextBox Text="{Binding AdresEmail}" Grid.Row="15" Grid.Column="1" />
+        <TextBox Text="{Binding AdresEmail}" Grid.Row="15" Grid.Column="1" VerticalContentAlignment="Center"/>
 
     </Grid>
 </xctk:WizardPage>

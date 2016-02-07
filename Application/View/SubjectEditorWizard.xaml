@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:View.WizardPage"
         Title="SubjectEditorWizard" Height="640" Width="500">
     <Grid>
-        <xctk:Wizard FinishButtonClosesWindow="True" HelpButtonVisibility="Collapsed">
+        <xctk:Wizard Name="SubjectCardWizard" FinishButtonClosesWindow="True" HelpButtonVisibility="Collapsed" >
             <local:CardSubjectInfo x:Name="KartaPrzedmiotuPage" PageType="Interior"
                                    Title="Karta przedmiotu - podstawowe informacje"
                                    NextPage="{Binding ElementName=Page2}"
@@ -15,7 +15,6 @@
 
             <xctk:WizardPage x:Name="Page2" PageType="Interior"
                                    Title="Karta przedmiotu - wynagania wstępne"
-                                   Description="This is the second page in the process"
                                    NextPage="{Binding ElementName=Page3}"
                                    PreviousPage="{Binding ElementName=KartaPrzedmiotuPage}">
                 <Grid>

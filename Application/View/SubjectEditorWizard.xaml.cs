@@ -20,11 +20,19 @@ namespace View
     /// </summary>
     public partial class SubjectEditorWizard : Window
     {
+        SubjectEditorModel ViewModel;
+        
         public SubjectEditorWizard()
         {
             InitializeComponent();
-            var viewModel = new SubjectEditorModel();
-            DataContext = viewModel;
+            SubjectCardWizard.Finish += SubjectCardWizard_Finish;
+            ViewModel = new SubjectEditorModel();
+            DataContext = ViewModel;
+        }
+
+        void SubjectCardWizard_Finish(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Save();
         }
     }
 }

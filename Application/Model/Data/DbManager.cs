@@ -44,10 +44,9 @@ namespace Model.Data
 
         public static void AddKartaPrzedmiotu(Karta_przedmiotu karta)
         {
-            Karta_przedmiotu y;
             using (var ctx = new DbEasyKRK())
             {
-                y=ctx.Karta_przedmiotu.Add(karta);
+                ctx.Karta_przedmiotu.Add(karta);
                 ctx.SaveChanges();
             }
         }

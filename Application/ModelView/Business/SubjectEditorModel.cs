@@ -205,6 +205,13 @@ namespace ModelView.Business
 
         public void Save()
         {
+            Karta_przedmiotu karta = new Karta_przedmiotu();
+            karta.NazwaPolska = _NazwaPrzedmiotuPl;
+            karta.NazwaAngielska = _NazwaPrzedmiotuAng;
+            karta.GrupaKursów = true;
+            karta.RodzajPrzedmiotu = 1;
+            karta.Program_KształceniaID = 1;
+            DbManager.AddKartaPrzedmiotu(karta);
             MessageBox.Show("Dodano kartę przedmiotu");
         }
 

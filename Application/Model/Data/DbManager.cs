@@ -33,11 +33,22 @@ namespace Model.Data
             }
         }
 
+
         public static List<ExSubjectCard> GetKartyPrzedmiotu() // dodać filtr tylko na użytkownika
         {
             using (var ctx = new DbEasyKRK())
             {
                 return ctx.Karta_przedmiotu.ToList().Select(x => new ExSubjectCard(x)).ToList();
+            }
+        }
+
+        public static void AddKartaPrzedmiotu(Karta_przedmiotu karta)
+        {
+            Karta_przedmiotu y;
+            using (var ctx = new DbEasyKRK())
+            {
+                y=ctx.Karta_przedmiotu.Add(karta);
+                ctx.SaveChanges();
             }
         }
     }

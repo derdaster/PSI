@@ -18,5 +18,7 @@ namespace Model.Data
         public string Nazwa { get; set; }
         public Nullable<int> Typ { get; set; }
         public Nullable<int> Karta_PrzedmiotuID { get; set; }
+    
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
     }
 }

@@ -69,6 +69,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\DbManager.cs" />
     <Compile Include="Data\Forma_studiów.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -79,9 +80,6 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Karta_przedmiotu.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Karta_przedmiotu_Autor_karty_przedmiotu.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Kierunek.cs">
@@ -138,6 +136,9 @@
     <Compile Include="Data\Semestr.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Temat_zajęć.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -148,6 +149,9 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Typ_oceny.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Użytkownik.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Wydział.cs">
@@ -171,7 +175,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.config" />
     <None Include="Data\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.Context.cs</LastGenOutput>

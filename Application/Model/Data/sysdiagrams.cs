@@ -12,13 +12,12 @@ namespace Model.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Karta_przedmiotu_Autor_karty_przedmiotu
+    public partial class sysdiagrams
     {
-        public int Karta_przedmiotuID { get; set; }
-        public int Autor_karty_przedmiotuID { get; set; }
-    
-        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
-        public virtual Autor_karty_przedmiotu Autor_karty_przedmiotu { get; set; }
-        public virtual Karta_przedmiotu Karta_przedmiotu1 { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

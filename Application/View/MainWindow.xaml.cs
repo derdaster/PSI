@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelView.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +24,15 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            var viewModel = new LoginModel();
+            viewModel.LoginCompleted += LoginCompleted;
+            DataContext = viewModel;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void LoginCompleted(object sender, EventArgs e)
         {
-            var win = new SubjectSearch();
-            win.ShowDialog();
+            new SubjectSearch().Show();
+            this.Close();
         }
     }
 }

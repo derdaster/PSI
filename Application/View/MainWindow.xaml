@@ -7,10 +7,10 @@
         <Label Content="EasyKRK" Height="77" VerticalAlignment="Top" Width="364" FontWeight="Bold" FontSize="48" HorizontalAlignment="Center" Margin="0,44,0,0" HorizontalContentAlignment="Center" />
         <Label HorizontalAlignment="Left" Margin="62,180,0,0" VerticalAlignment="Top"/>
         <Label Content="Użytkownik" HorizontalAlignment="Left" Margin="76,172,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding Login}"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="76,203,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
-        <Button Content="Zaloguj się" HorizontalAlignment="Left" Margin="366,235,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding Password}"/>
+        <Button Content="Zaloguj się" HorizontalAlignment="Left" Margin="366,235,0,0" VerticalAlignment="Top" Width="74" Command="{Binding LoginCmd}"/>
 
     </Grid>
 </Window>

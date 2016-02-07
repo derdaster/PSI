@@ -220,9 +220,24 @@ namespace ModelView.Business
             DataList = new ObservableCollection<ExSubjectCard>(DbManager.GetKartyPrzedmiotu());
         }
 
-        public void Filter()
+        private void Filter()
         {
-            MessageBox.Show("Filtrowanie");
+            DataList = new ObservableCollection<ExSubjectCard>(DbManager.GetKartyPrzedmiotuBy(FilterData));
+        }
+
+        private bool FilterData(Karta_przedmiotu item)
+        {
+            if (!String.IsNullOrWhiteSpace(NazwaPrzedmiotuPl) && !item.NazwaPolska.ToLower().Contains(NazwaPrzedmiotuPl.ToLower()))
+            {
+                return false;
+            }
+
+            if (!String.IsNullOrWhiteSpace(NazwaPrzedmiotuAng) && !item.NazwaAngielska.ToLower().Contains(NazwaPrzedmiotuAng.ToLower()))
+            {
+                return false;
+            }
+            
+            return true;
         }
 
         protected virtual void RaiseLoginCompleted()

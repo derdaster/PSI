@@ -42,6 +42,14 @@ namespace Model.Data
             }
         }
 
+        public static List<ExSubjectCard> GetKartyPrzedmiotuBy(Func<Karta_przedmiotu, bool> filter) // dodać filtr tylko na użytkownika
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Karta_przedmiotu.ToList().Where(x => filter(x)).Select(x => new ExSubjectCard(x)).ToList();
+            }
+        }
+
         public static void AddKartaPrzedmiotu(Karta_przedmiotu karta)
         {
             using (var ctx = new DbEasyKRK())

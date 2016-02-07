@@ -17,6 +17,8 @@ namespace Model.Entities
         public string Specjalność { get; set; }
         public string Stopień { get; set; }
         public string FormaStudiów { get; set; }
+        public string RodzajPrzedmiotu { get; set; }
+        public string GrupaKursów { get; set; }
 
         public ExSubjectCard(Karta_przedmiotu item)
         {

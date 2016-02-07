@@ -19,6 +19,7 @@ namespace Model.Data
         public string Temat { get; set; }
         public int LiczbaGodzin { get; set; }
         public int Treść_programowaID { get; set; }
+        public Nullable<int> Treść_ProgramowaID { get; set; }
     
         public virtual Treść_programowa Treść_programowa { get; set; }
     }

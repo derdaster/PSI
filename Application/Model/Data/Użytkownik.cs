@@ -12,11 +12,13 @@ namespace Model.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Literatura
+    public partial class Użytkownik
     {
         public int ID { get; set; }
-        public string Nazwa { get; set; }
-        public Nullable<int> Typ { get; set; }
-        public Nullable<int> Karta_PrzedmiotuID { get; set; }
+        public string Imię { get; set; }
+        public string Nazwisko { get; set; }
+        public string Login { get; set; }
+        public string Hasło { get; set; }
+        public string E_mail { get; set; }
     }
 }

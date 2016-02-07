@@ -37,6 +37,9 @@
         <EntityTypeShape EntityType="EasyKRKModel.Wydział" Width="1.5" PointX="12.75" PointY="3.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Wymaganie_wstępne" Width="1.5" PointX="12.75" PointY="6.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Zakres_PEK" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Użytkownik" Width="1.5" PointX="13.375" PointY="12.75" />
+        <AssociationConnector Association="EasyKRKModel.FK_Karta_przedmiotu_Autor_karty_przedmiotu_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

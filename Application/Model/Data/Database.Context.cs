@@ -57,5 +57,6 @@ namespace Model.Data
         public virtual DbSet<Wydział> Wydział { get; set; }
         public virtual DbSet<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
         public virtual DbSet<Zakres_PEK> Zakres_PEK { get; set; }
+        public virtual DbSet<Użytkownik> Użytkownik { get; set; }
     }
 }

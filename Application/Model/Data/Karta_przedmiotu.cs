@@ -21,6 +21,7 @@ namespace Model.Data
             this.Wymaganie_wstępne = new HashSet<Wymaganie_wstępne>();
             this.Karta_przedmiotu_Autor_karty_przedmiotu = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
             this.Treść_programowa = new HashSet<Treść_programowa>();
+            this.Karta_przedmiotu_Autor_karty_przedmiotu1 = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
         }
     
         public int ID { get; set; }
@@ -37,5 +38,8 @@ namespace Model.Data
         public virtual ICollection<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Treść_programowa> Treść_programowa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu1 { get; set; }
+        public virtual Narzędzia_dydaktyczne Narzędzia_dydaktyczne { get; set; }
     }
 }

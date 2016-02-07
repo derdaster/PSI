@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Authorization\LoginModel.cs" />
     <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Business\SubjectEditorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MD5Helper.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
@@ -73,9 +74,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

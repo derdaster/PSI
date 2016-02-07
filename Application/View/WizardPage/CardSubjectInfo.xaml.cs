@@ -1,5 +1,4 @@
-﻿using ModelView.Business;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View
+namespace View.WizardPage
 {
     /// <summary>
-    /// Interaction logic for SubjectEditorWizard.xaml
+    /// Interaction logic for CardSubjectInfo.xaml
     /// </summary>
-    public partial class SubjectEditorWizard : Window
+    public partial class CardSubjectInfo : Xceed.Wpf.Toolkit.WizardPage
     {
-        public SubjectEditorWizard()
+        public CardSubjectInfo()
         {
             InitializeComponent();
-            var viewModel = new SubjectEditorModel();
-            DataContext = viewModel;
         }
     }
 }

@@ -150,6 +150,9 @@
     <Compile Include="Data\Typ_oceny.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Użytkownik.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Wydział.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

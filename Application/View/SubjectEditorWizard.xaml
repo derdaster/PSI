@@ -15,22 +15,20 @@
                                    PreviousPage="{Binding ElementName=IntroPage}"
                              CanSelectNextPage="True">
                 <Grid>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,2.231"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="12,333,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="12,359,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,399,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nazwa przedmiotu w j. pol." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nazwa przedmiotu w j. ang." HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wydział" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.579,2.231"/>
+                    <Label Content="Kierunek studiów" HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Specjalność" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Stopień studiów" HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Forma studiów" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Rodzaj przedmiotu" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Kod przedmiotu" HorizontalAlignment="Left" Margin="12,333,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Grupa kursów" HorizontalAlignment="Left" Margin="12,359,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Opiekun przedmiotu" HorizontalAlignment="Left" Margin="10,399,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Imię" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,14,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,45,0,0"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,76,0,0"/>
                     <ComboBox HorizontalAlignment="Left" Margin="160,107,0,0" VerticalAlignment="Top" Width="120"/>
                     <ComboBox HorizontalAlignment="Left" Margin="160,138,0,0" VerticalAlignment="Top" Width="120"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,169,0,0"/>
@@ -50,8 +48,8 @@
                         <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
                     </DockPanel>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,456,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="10,456,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Adres e-mail" HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,434,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,460,0,0"/>
                     <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="160,486,0,0"/>
@@ -68,7 +66,7 @@
                                    Title="Karta przedmiotu - wynagania wstępne"
                                    Description="This is the second page in the process">
                 <Grid>
-                    <Label Content="Label" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Wymagania wstęne w zakresie wiedzy, umiejętności i innych kompetencji" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
                     <ListView HorizontalAlignment="Left" Height="196" Margin="21,51,0,0" VerticalAlignment="Top" Width="349">
                         <ListView.View>
                             <GridView>
@@ -122,7 +120,7 @@
                                    Title="Karta przedmiotu - przedmiotowe efekty kształcenia"
                                    Description="This is the second page in the process">
             <Grid>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Z zakresu wiedzy:" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
                 <ListView HorizontalAlignment="Left" Height="64" Margin="21,51,0,0" VerticalAlignment="Top" Width="349">
                     <ListView.View>
                         <GridView>
@@ -141,7 +139,7 @@
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="21,143,0,0" VerticalAlignment="Top"/>
+                <Label Content="Z zakresu umiejętności:" HorizontalAlignment="Left" Margin="21,143,0,0" VerticalAlignment="Top"/>
                 <ListView HorizontalAlignment="Left" Height="64" Margin="21,184,0,0" VerticalAlignment="Top" Width="349">
                     <ListView.View>
                         <GridView>
@@ -152,7 +150,7 @@
                     <ListViewItem Content="ListViewItem" Margin="0"/>
                 </ListView>
                 <Button Content="Usuń" HorizontalAlignment="Left" Margin="384,184,0,0" VerticalAlignment="Top" Width="39" RenderTransformOrigin="0,8.5"/>
-                <Label Content="Label" HorizontalAlignment="Left" Margin="21,260,0,0" VerticalAlignment="Top"/>
+                <Label Content="Z zakresu kompetencji:" HorizontalAlignment="Left" Margin="21,260,0,0" VerticalAlignment="Top"/>
                 <ListView HorizontalAlignment="Left" Height="64" Margin="21,301,0,0" VerticalAlignment="Top" Width="349">
                     <ListView.View>
                         <GridView>
@@ -164,9 +162,9 @@
                 </ListView>
                 <Button Content="Usuń" HorizontalAlignment="Left" Margin="384,301,0,0" VerticalAlignment="Top" Width="39"/>
                 <Grid Margin="21,485,114,19">
-                    <RadioButton Content="RadioButton" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top"/>
-                    <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="222,0,0,0" VerticalAlignment="Top"/>
+                    <RadioButton Content="z zakresu wiedzy" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <RadioButton Content="z zakresu umiejętności" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top"/>
+                    <RadioButton Content="z zakresu kompetencji" HorizontalAlignment="Left" Margin="222,0,0,0" VerticalAlignment="Top"/>
 
 
                 </Grid>

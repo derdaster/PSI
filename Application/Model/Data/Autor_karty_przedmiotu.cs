@@ -18,6 +18,7 @@ namespace Model.Data
         public Autor_karty_przedmiotu()
         {
             this.Karta_przedmiotu_Autor_karty_przedmiotu = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
+            this.Karta_przedmiotu = new HashSet<Karta_przedmiotu>();
         }
     
         public int ID { get; set; }
@@ -27,5 +28,7 @@ namespace Model.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Karta_przedmiotu> Karta_przedmiotu { get; set; }
     }
 }

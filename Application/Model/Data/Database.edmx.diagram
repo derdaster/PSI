@@ -7,11 +7,11 @@
       <Diagram DiagramId="524adf50f54944d4bb4d430599f9b86f" Name="Diagram1">
         <EntityTypeShape EntityType="EasyKRKModel.Karta_przedmiotu" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EasyKRKModel.Autor_karty_przedmiotu" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EasyKRKModel.Cel_przedmiotu" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Cel_przedmiotu" Width="1.5" PointX="1" PointY="5" />
         <EntityTypeShape EntityType="EasyKRKModel.Forma_studiów" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Forma_zajęć" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Grupa_kursów" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" Width="1.5" PointX="0.5" PointY="7.625" />
         <EntityTypeShape EntityType="EasyKRKModel.Kierunek" Width="1.5" PointX="2.75" PointY="6.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Kierunkowy_efekt_kształcenia" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="EasyKRKModel.Kurs" Width="1.5" PointX="4.75" PointY="6.75" />
@@ -40,6 +40,13 @@
         <EntityTypeShape EntityType="EasyKRKModel.Użytkownik" Width="1.5" PointX="13.375" PointY="12.75" />
         <AssociationConnector Association="EasyKRKModel.FK_Karta_przedmiotu_Autor_karty_przedmiotu_Karta_przedmiotu" />
         <AssociationConnector Association="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Cel_przedmiotu_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Literatura_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu1" />
+        <AssociationConnector Association="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Temat_zajęć_Treść_programowa" />
+        <AssociationConnector Association="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

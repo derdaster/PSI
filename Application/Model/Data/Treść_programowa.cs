@@ -18,6 +18,7 @@ namespace Model.Data
         public Treść_programowa()
         {
             this.Temat_zajęć = new HashSet<Temat_zajęć>();
+            this.Temat_zajęć1 = new HashSet<Temat_zajęć>();
         }
     
         public int ID { get; set; }
@@ -28,5 +29,8 @@ namespace Model.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Temat_zajęć> Temat_zajęć { get; set; }
         public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
+        public virtual Karta_przedmiotu Karta_przedmiotu1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Temat_zajęć> Temat_zajęć1 { get; set; }
     }
 }

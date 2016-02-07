@@ -22,6 +22,12 @@ namespace Model.Data
             this.Karta_przedmiotu_Autor_karty_przedmiotu = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
             this.Treść_programowa = new HashSet<Treść_programowa>();
             this.Karta_przedmiotu_Autor_karty_przedmiotu1 = new HashSet<Karta_przedmiotu_Autor_karty_przedmiotu>();
+            this.Cel_przedmiotu1 = new HashSet<Cel_przedmiotu>();
+            this.Literatura = new HashSet<Literatura>();
+            this.Narzędzia_dydaktyczne1 = new HashSet<Narzędzia_dydaktyczne>();
+            this.Treść_programowa1 = new HashSet<Treść_programowa>();
+            this.Wymaganie_wstępne1 = new HashSet<Wymaganie_wstępne>();
+            this.Autor_karty_przedmiotu = new HashSet<Autor_karty_przedmiotu>();
         }
     
         public int ID { get; set; }
@@ -41,5 +47,17 @@ namespace Model.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Karta_przedmiotu_Autor_karty_przedmiotu> Karta_przedmiotu_Autor_karty_przedmiotu1 { get; set; }
         public virtual Narzędzia_dydaktyczne Narzędzia_dydaktyczne { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cel_przedmiotu> Cel_przedmiotu1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Literatura> Literatura { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Narzędzia_dydaktyczne> Narzędzia_dydaktyczne1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Treść_programowa> Treść_programowa1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Wymaganie_wstępne> Wymaganie_wstępne1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Autor_karty_przedmiotu> Autor_karty_przedmiotu { get; set; }
     }
 }

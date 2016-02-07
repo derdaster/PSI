@@ -46,6 +46,9 @@ namespace ModelView.Authorization
         public LoginModel()
         {
             LoginCmd = new RelayCommand(par => LoginUser());
+
+            Login = "test";
+            Password = "test";
         }
 
         private void LoginUser()

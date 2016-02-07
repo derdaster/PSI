@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,14 @@ namespace Model.Data
             using (var ctx = new DbEasyKRK())
             {
                 return ctx.Kierunek.Where(x => x.WydziałID == idWydział).ToList();
+            }
+        }
+
+        public static List<ExSubjectCard> GetKartyPrzedmiotu() // dodać filtr tylko na użytkownika
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Karta_przedmiotu.ToList().Select(x => new ExSubjectCard(x)).ToList();
             }
         }
     }

@@ -163,6 +163,7 @@
     <Compile Include="Data\Zakres_PEK.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ExSubjectCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

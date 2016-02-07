@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelView.Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace View
         public SubjectSearch()
         {
             InitializeComponent();
+            var viewModel = new SubjectSearchModel();
+            DataContext = viewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

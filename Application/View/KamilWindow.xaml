@@ -1,0 +1,85 @@
+﻿<Window x:Class="View.KamilWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KamilWindow" Height="500" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Nazwa przedmiotu w j. pol." VerticalContentAlignment="Center" />
+        <TextBox Grid.Column="1" VerticalContentAlignment="Center" />
+
+        <Label Content="Nazwa przedmiotu w j. ang." Grid.Row="1" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center"  />
+
+        <Label Content="Wydział" Grid.Row="3"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" />
+
+        <Label Content="Kierunek studiów" Grid.Row="4" />
+        <ComboBox Grid.Row="4" Grid.Column="1"  />
+
+        <Label Content="Specjalność" Grid.Row="5" />
+        <TextBox Grid.Row="5" Grid.Column="1"  />
+
+        <Label Content="Stopień studiów" Grid.Row="6" />
+        <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal" >
+            <RadioButton Content="I stopień" VerticalAlignment="Center"   />
+            <RadioButton Content="II stopień"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Label Content="Forma studiów" Grid.Row="7" />
+        <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal" >
+            <RadioButton Content="stacjonarna" VerticalAlignment="Center" />
+            <RadioButton Content="niestacjonarna"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Label Content="Rodzaj przedmiotu" Grid.Row="8"  />
+        <StackPanel Grid.Column="1" Grid.Row="8" >
+            <RadioButton Content="obowiązkowy" Margin="0,5" />
+            <RadioButton Content="wybieralny"  Margin="0,5"/>
+            <RadioButton Content="ogólnouczelniany" Margin="0,5" />
+        </StackPanel>
+
+        <Label Content="Kod przedmiotu" Grid.Row="9"  />
+        <TextBox Grid.Row="9" Grid.Column="1" />
+
+        <Label Content="Grupa kursów" Grid.Row="10"  />
+        <StackPanel Grid.Column="1" Grid.Row="10" Orientation="Horizontal" >
+            <RadioButton Content="tak" VerticalAlignment="Center" />
+            <RadioButton Content="nie"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Label Content="Opiekun przedmiotu" Grid.Row="12"  FontWeight="Bold" />
+
+        <Label Content="Imię" Grid.Row="13" />
+        <TextBox Grid.Row="13" Grid.Column="1" />
+
+        <Label Content="Nazwisko" Grid.Row="14" />
+        <TextBox Grid.Row="14" Grid.Column="1" />
+
+        <Label Content="Adres e-mail" Grid.Row="15" />
+        <TextBox Grid.Row="15" Grid.Column="1" />
+
+    </Grid>
+</Window>

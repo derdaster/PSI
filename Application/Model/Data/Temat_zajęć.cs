@@ -21,5 +21,6 @@ namespace Model.Data
         public Nullable<int> Treść_ProgramowaID { get; set; }
     
         public virtual Treść_programowa Treść_programowa { get; set; }
+        public virtual Treść_programowa Treść_programowa1 { get; set; }
     }
 }

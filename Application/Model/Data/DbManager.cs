@@ -287,11 +287,11 @@ namespace Model.Data
             }
         }
 
-        public static List<Literatura> getLiteratura(int kartaID)
+        public static List<Literatura> getLiteratura(int kartaID, int typ)
         {
             using (var ctx = new DbEasyKRK())
             {
-                return ctx.Literatura.Where(x => x.Karta_PrzedmiotuID == kartaID).ToList();
+                return ctx.Literatura.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Typ==typ).ToList();
             }
         }
 
@@ -308,6 +308,14 @@ namespace Model.Data
             using (var ctx = new DbEasyKRK())
             {
                 return ctx.Temat_zajęć.Where(x => x.Treść_ProgramowaID == trescID).ToList();
+            }
+        }
+
+        public static List<Przedmiotowy_efekt_kształcenia> getPEK(int kartaID, int zakres)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Przedmiotowy_efekt_kształcenia.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Zakres==zakres).ToList();
             }
         }
     }

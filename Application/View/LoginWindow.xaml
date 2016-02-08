@@ -9,7 +9,7 @@
         <Label Content="Użytkownik" HorizontalAlignment="Left" Margin="76,172,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="174,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding Login}"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="76,203,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="{Binding Password}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="174,207,0,0" VerticalAlignment="Top" Width="266" Text="{Binding Password}" />
         <Button Content="Zaloguj się" HorizontalAlignment="Left" Margin="366,235,0,0" VerticalAlignment="Top" Width="74" Command="{Binding LoginCmd}"/>
 
     </Grid>

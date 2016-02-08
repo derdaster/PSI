@@ -20,10 +20,10 @@ namespace Model.Data
             this.Cel_przedmiotu = new HashSet<Cel_przedmiotu>();
             this.Literatura = new HashSet<Literatura>();
             this.Narzędzia_dydaktyczne = new HashSet<Narzędzia_dydaktyczne>();
+            this.Przedmiotowy_efekt_kształcenia = new HashSet<Przedmiotowy_efekt_kształcenia>();
             this.Treść_programowa = new HashSet<Treść_programowa>();
             this.Wymaganie_wstępne = new HashSet<Wymaganie_wstępne>();
             this.Autor_karty_przedmiotu = new HashSet<Autor_karty_przedmiotu>();
-            this.Przedmiotowy_efekt_kształcenia = new HashSet<Przedmiotowy_efekt_kształcenia>();
         }
     
         public int ID { get; set; }
@@ -31,24 +31,24 @@ namespace Model.Data
         public string NazwaAngielska { get; set; }
         public bool GrupaKursów { get; set; }
         public Nullable<int> RodzajPrzedmiotu { get; set; }
-        public Nullable<int> Program_KształceniaID { get; set; }
+        public int Program_KształceniaID { get; set; }
         public Nullable<int> PrzedmiotID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cel_przedmiotu> Cel_przedmiotu { get; set; }
+        public virtual Program_kształcenia Program_kształcenia { get; set; }
+        public virtual Przedmiot Przedmiot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Literatura> Literatura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Narzędzia_dydaktyczne> Narzędzia_dydaktyczne { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Przedmiotowy_efekt_kształcenia> Przedmiotowy_efekt_kształcenia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Treść_programowa> Treść_programowa { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Autor_karty_przedmiotu> Autor_karty_przedmiotu { get; set; }
-        public virtual Program_kształcenia Program_kształcenia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Przedmiotowy_efekt_kształcenia> Przedmiotowy_efekt_kształcenia { get; set; }
-        public virtual Przedmiot Przedmiot { get; set; }
     }
 }

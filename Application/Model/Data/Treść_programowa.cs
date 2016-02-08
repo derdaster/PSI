@@ -24,8 +24,8 @@ namespace Model.Data
         public Nullable<int> FormaZajeć { get; set; }
         public Nullable<int> Karta_PrzedmiotuID { get; set; }
     
-        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Temat_zajęć> Temat_zajęć { get; set; }
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
     }
 }

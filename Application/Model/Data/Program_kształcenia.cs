@@ -28,8 +28,8 @@ namespace Model.Data
         public string Specjalność { get; set; }
         public Nullable<int> KierunekID { get; set; }
     
+        public virtual Kierunek Kierunek { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Karta_przedmiotu> Karta_przedmiotu { get; set; }
-        public virtual Kierunek Kierunek { get; set; }
     }
 }

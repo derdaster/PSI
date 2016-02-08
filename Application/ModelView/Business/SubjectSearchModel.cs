@@ -276,7 +276,7 @@ namespace ModelView.Business
             DataList = new ObservableCollection<ExSubjectCard>(DbManager.GetKartyPrzedmiotuBy(FilterData));
         }
 
-        private bool FilterData(Karta_przedmiotu item)
+        private bool FilterData(ExSubjectCard item)
         {
             if (!String.IsNullOrWhiteSpace(NazwaPrzedmiotuPl) && !item.NazwaPolska.ToLower().Contains(NazwaPrzedmiotuPl.ToLower()))
             {

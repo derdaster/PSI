@@ -15,15 +15,19 @@ namespace Model.Entities
         public string Wydział { get; set; }
         public string Kierunek { get; set; }
         public string Specjalność { get; set; }
-        public string Stopień { get; set; }
-        public string FormaStudiów { get; set; }
-        public string RodzajPrzedmiotu { get; set; }
+        public StopieńStudiówEnum Stopień { get; set; }
+        public FormaStudiówEnum FormaStudiów { get; set; }
+        public RodzajPrzedmiotuEnum RodzajPrzedmiotu { get; set; }
         public string GrupaKursów { get; set; }
 
-        public ExSubjectCard(Karta_przedmiotu item)
+        public ExSubjectCard()
         {
-            this.NazwaPolska = item.NazwaPolska;
-            this.NazwaAngielska = item.NazwaAngielska;
+        }
+
+        public ExSubjectCard(Karta_przedmiotu kp)
+        {
+            this.NazwaPolska = kp.NazwaPolska;
+            this.NazwaAngielska = kp.NazwaAngielska;
         }
     }
 }

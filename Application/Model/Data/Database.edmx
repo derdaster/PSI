@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EasyKRKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EasyKRKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autor karty przedmiotu">
           <Key>
             <PropertyRef Name="ID" />
@@ -57,7 +57,7 @@
           <Property Name="NazwaAngielska" Type="varchar" MaxLength="255" />
           <Property Name="GrupaKursów" Type="bit" Nullable="false" />
           <Property Name="RodzajPrzedmiotu" Type="int" />
-          <Property Name="Program KształceniaID" Type="int" />
+          <Property Name="Program KształceniaID" Type="int" Nullable="false" />
           <Property Name="PrzedmiotID" Type="int" />
         </EntityType>
         <EntityType Name="Karta przedmiotu_Autor karty przedmiotu">
@@ -331,7 +331,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Karta przedmiotu_Program kształcenia">
-          <End Role="Program kształcenia" Type="Self.Program kształcenia" Multiplicity="0..1" />
+          <End Role="Program kształcenia" Type="Self.Program kształcenia" Multiplicity="1" />
           <End Role="Karta przedmiotu" Type="Self.Karta przedmiotu" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Program kształcenia">
@@ -564,7 +564,6 @@
           <EntitySet Name="Forma_studiów" EntityType="EasyKRKModel.Forma_studiów" />
           <EntitySet Name="Forma_zajęć" EntityType="EasyKRKModel.Forma_zajęć" />
           <EntitySet Name="Grupa_kursów" EntityType="EasyKRKModel.Grupa_kursów" />
-          <EntitySet Name="Karta_przedmiotu" EntityType="EasyKRKModel.Karta_przedmiotu" />
           <EntitySet Name="Kierunek" EntityType="EasyKRKModel.Kierunek" />
           <EntitySet Name="Kierunkowy_efekt_kształcenia" EntityType="EasyKRKModel.Kierunkowy_efekt_kształcenia" />
           <EntitySet Name="Kurs" EntityType="EasyKRKModel.Kurs" />
@@ -592,41 +591,9 @@
           <EntitySet Name="Wydział" EntityType="EasyKRKModel.Wydział" />
           <EntitySet Name="Wymaganie_wstępne" EntityType="EasyKRKModel.Wymaganie_wstępne" />
           <EntitySet Name="Zakres_PEK" EntityType="EasyKRKModel.Zakres_PEK" />
-          <AssociationSet Name="FK_Cel_przedmiotu_Karta_przedmiotu" Association="EasyKRKModel.FK_Cel_przedmiotu_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Cel_przedmiotu" EntitySet="Cel_przedmiotu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Literatura_Karta_przedmiotu" Association="EasyKRKModel.FK_Literatura_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Literatura" EntitySet="Literatura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Narzędzia_dydaktyczne_Karta_przedmiotu" Association="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Narzędzia_dydaktyczne" EntitySet="Narzędzia_dydaktyczne" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Treść_programowa_Karta_przedmiotu" Association="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Treść_programowa" EntitySet="Treść_programowa" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Wymaganie_wstępne_Karta_przedmiotu" Association="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Wymaganie_wstępne" EntitySet="Wymaganie_wstępne" />
-          </AssociationSet>
           <AssociationSet Name="FK_Temat_zajęć_Treść_programowa" Association="EasyKRKModel.FK_Temat_zajęć_Treść_programowa">
             <End Role="Treść_programowa" EntitySet="Treść_programowa" />
             <End Role="Temat_zajęć" EntitySet="Temat_zajęć" />
-          </AssociationSet>
-          <AssociationSet Name="Karta_przedmiotu_Autor_karty_przedmiotu" Association="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu">
-            <End Role="Autor_karty_przedmiotu" EntitySet="Autor_karty_przedmiotu" />
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Karta_przedmiotu_Program_kształcenia" Association="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia">
-            <End Role="Program_kształcenia" EntitySet="Program_kształcenia" />
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" Association="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu">
-            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
-            <End Role="Przedmiotowy_efekt_kształcenia" EntitySet="Przedmiotowy_efekt_kształcenia" />
           </AssociationSet>
           <AssociationSet Name="FK_Kierunek_Wydział" Association="EasyKRKModel.FK_Kierunek_Wydział">
             <End Role="Wydział" EntitySet="Wydział" />
@@ -640,8 +607,41 @@
             <End Role="Przedmiot" EntitySet="Przedmiot" />
             <End Role="Przedmiotowy_efekt_kształcenia" EntitySet="Przedmiotowy_efekt_kształcenia" />
           </AssociationSet>
+          <EntitySet Name="Karta_przedmiotu" EntityType="EasyKRKModel.Karta_przedmiotu" />
+          <AssociationSet Name="FK_Cel_przedmiotu_Karta_przedmiotu" Association="EasyKRKModel.FK_Cel_przedmiotu_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Cel_przedmiotu" EntitySet="Cel_przedmiotu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karta_przedmiotu_Program_kształcenia" Association="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia">
+            <End Role="Program_kształcenia" EntitySet="Program_kształcenia" />
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+          </AssociationSet>
           <AssociationSet Name="FK_Karta_przedmiotu_Przedmiot" Association="EasyKRKModel.FK_Karta_przedmiotu_Przedmiot">
             <End Role="Przedmiot" EntitySet="Przedmiot" />
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Literatura_Karta_przedmiotu" Association="EasyKRKModel.FK_Literatura_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Literatura" EntitySet="Literatura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Narzędzia_dydaktyczne_Karta_przedmiotu" Association="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Narzędzia_dydaktyczne" EntitySet="Narzędzia_dydaktyczne" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" Association="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Przedmiotowy_efekt_kształcenia" EntitySet="Przedmiotowy_efekt_kształcenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Treść_programowa_Karta_przedmiotu" Association="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Treść_programowa" EntitySet="Treść_programowa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wymaganie_wstępne_Karta_przedmiotu" Association="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu">
+            <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
+            <End Role="Wymaganie_wstępne" EntitySet="Wymaganie_wstępne" />
+          </AssociationSet>
+          <AssociationSet Name="Karta_przedmiotu_Autor_karty_przedmiotu" Association="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu">
+            <End Role="Autor_karty_przedmiotu" EntitySet="Autor_karty_przedmiotu" />
             <End Role="Karta_przedmiotu" EntitySet="Karta_przedmiotu" />
           </AssociationSet>
         </EntityContainer>
@@ -689,27 +689,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ECTS" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Karta_przedmiotu">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NazwaPolska" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="NazwaAngielska" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="GrupaKursów" Type="Boolean" Nullable="false" />
-          <Property Name="RodzajPrzedmiotu" Type="Int32" />
-          <Property Name="Program_KształceniaID" Type="Int32" />
-          <NavigationProperty Name="Cel_przedmiotu" Relationship="EasyKRKModel.FK_Cel_przedmiotu_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Cel_przedmiotu" />
-          <NavigationProperty Name="Literatura" Relationship="EasyKRKModel.FK_Literatura_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Literatura" />
-          <NavigationProperty Name="Narzędzia_dydaktyczne" Relationship="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Narzędzia_dydaktyczne" />
-          <NavigationProperty Name="Treść_programowa" Relationship="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Treść_programowa" />
-          <NavigationProperty Name="Wymaganie_wstępne" Relationship="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Wymaganie_wstępne" />
-          <NavigationProperty Name="Autor_karty_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Autor_karty_przedmiotu" />
-          <NavigationProperty Name="Program_kształcenia" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia" FromRole="Karta_przedmiotu" ToRole="Program_kształcenia" />
-          <NavigationProperty Name="Przedmiotowy_efekt_kształcenia" Relationship="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Przedmiotowy_efekt_kształcenia" />
-          <Property Name="PrzedmiotID" Type="Int32" />
-          <NavigationProperty Name="Przedmiot" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Przedmiot" FromRole="Karta_przedmiotu" ToRole="Przedmiot" />
         </EntityType>
         <EntityType Name="Kierunek">
           <Key>
@@ -819,8 +798,8 @@
           <Property Name="Język" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Specjalność" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="KierunekID" Type="Int32" />
-          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia" FromRole="Program_kształcenia" ToRole="Karta_przedmiotu" />
           <NavigationProperty Name="Kierunek" Relationship="EasyKRKModel.FK_Program_kształcenia_Kierunek" FromRole="Program_kształcenia" ToRole="Kierunek" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia" FromRole="Program_kształcenia" ToRole="Karta_przedmiotu" />
         </EntityType>
         <EntityType Name="Program_studiów">
           <Key>
@@ -849,8 +828,8 @@
           <Property Name="Zakres" Type="Int32" />
           <Property Name="Kod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Karta_PrzedmiotuID" Type="Int32" />
-          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" FromRole="Przedmiotowy_efekt_kształcenia" ToRole="Karta_przedmiotu" />
           <NavigationProperty Name="Przedmiot" Relationship="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Przedmiot" FromRole="Przedmiotowy_efekt_kształcenia" ToRole="Przedmiot" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" FromRole="Przedmiotowy_efekt_kształcenia" ToRole="Karta_przedmiotu" />
         </EntityType>
         <EntityType Name="Rodzaj_przedmiotu">
           <Key>
@@ -896,8 +875,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FormaZajeć" Type="Int32" />
           <Property Name="Karta_PrzedmiotuID" Type="Int32" />
-          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu" FromRole="Treść_programowa" ToRole="Karta_przedmiotu" />
           <NavigationProperty Name="Temat_zajęć" Relationship="EasyKRKModel.FK_Temat_zajęć_Treść_programowa" FromRole="Treść_programowa" ToRole="Temat_zajęć" />
+          <NavigationProperty Name="Karta_przedmiotu" Relationship="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu" FromRole="Treść_programowa" ToRole="Karta_przedmiotu" />
         </EntityType>
         <EntityType Name="Typ_literatury">
           <Key>
@@ -952,66 +931,6 @@
           <Property Name="Umiejętność" Type="Int32" />
           <Property Name="Kompetencji" Type="Int32" />
         </EntityType>
-        <Association Name="FK_Cel_przedmiotu_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Cel_przedmiotu" Role="Cel_przedmiotu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Cel_przedmiotu">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Literatura_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Literatura" Role="Literatura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Literatura">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Narzędzia_dydaktyczne_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Narzędzia_dydaktyczne" Role="Narzędzia_dydaktyczne" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Narzędzia_dydaktyczne">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Treść_programowa_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Treść_programowa" Role="Treść_programowa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Treść_programowa">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Wymaganie_wstępne_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Wymaganie_wstępne" Role="Wymaganie_wstępne" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Wymaganie_wstępne">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Temat_zajęć_Treść_programowa">
           <End Type="EasyKRKModel.Treść_programowa" Role="Treść_programowa" Multiplicity="0..1" />
           <End Type="EasyKRKModel.Temat_zajęć" Role="Temat_zajęć" Multiplicity="*" />
@@ -1021,34 +940,6 @@
             </Principal>
             <Dependent Role="Temat_zajęć">
               <PropertyRef Name="Treść_ProgramowaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Karta_przedmiotu_Autor_karty_przedmiotu">
-          <End Type="EasyKRKModel.Autor_karty_przedmiotu" Role="Autor_karty_przedmiotu" Multiplicity="*" />
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Karta_przedmiotu_Program_kształcenia">
-          <End Type="EasyKRKModel.Program_kształcenia" Role="Program_kształcenia" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program_kształcenia">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Karta_przedmiotu">
-              <PropertyRef Name="Program_KształceniaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu">
-          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
-          <End Type="EasyKRKModel.Przedmiotowy_efekt_kształcenia" Role="Przedmiotowy_efekt_kształcenia" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Karta_przedmiotu">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Przedmiotowy_efekt_kształcenia">
-              <PropertyRef Name="Karta_PrzedmiotuID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1088,6 +979,51 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Karta_przedmiotu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazwaPolska" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NazwaAngielska" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="GrupaKursów" Type="Boolean" Nullable="false" />
+          <Property Name="RodzajPrzedmiotu" Type="Int32" />
+          <Property Name="Program_KształceniaID" Type="Int32" Nullable="false" />
+          <Property Name="PrzedmiotID" Type="Int32" />
+          <NavigationProperty Name="Cel_przedmiotu" Relationship="EasyKRKModel.FK_Cel_przedmiotu_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Cel_przedmiotu" />
+          <NavigationProperty Name="Program_kształcenia" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia" FromRole="Karta_przedmiotu" ToRole="Program_kształcenia" />
+          <NavigationProperty Name="Przedmiot" Relationship="EasyKRKModel.FK_Karta_przedmiotu_Przedmiot" FromRole="Karta_przedmiotu" ToRole="Przedmiot" />
+          <NavigationProperty Name="Literatura" Relationship="EasyKRKModel.FK_Literatura_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Literatura" />
+          <NavigationProperty Name="Narzędzia_dydaktyczne" Relationship="EasyKRKModel.FK_Narzędzia_dydaktyczne_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Narzędzia_dydaktyczne" />
+          <NavigationProperty Name="Przedmiotowy_efekt_kształcenia" Relationship="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Przedmiotowy_efekt_kształcenia" />
+          <NavigationProperty Name="Treść_programowa" Relationship="EasyKRKModel.FK_Treść_programowa_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Treść_programowa" />
+          <NavigationProperty Name="Wymaganie_wstępne" Relationship="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Wymaganie_wstępne" />
+          <NavigationProperty Name="Autor_karty_przedmiotu" Relationship="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" FromRole="Karta_przedmiotu" ToRole="Autor_karty_przedmiotu" />
+        </EntityType>
+        <Association Name="FK_Cel_przedmiotu_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Cel_przedmiotu" Role="Cel_przedmiotu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cel_przedmiotu">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karta_przedmiotu_Program_kształcenia">
+          <End Type="EasyKRKModel.Program_kształcenia" Role="Program_kształcenia" Multiplicity="1" />
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program_kształcenia">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Karta_przedmiotu">
+              <PropertyRef Name="Program_KształceniaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Karta_przedmiotu_Przedmiot">
           <End Type="EasyKRKModel.Przedmiot" Role="Przedmiot" Multiplicity="0..1" />
           <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="*" />
@@ -1099,6 +1035,70 @@
               <PropertyRef Name="PrzedmiotID" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Literatura_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Literatura" Role="Literatura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Literatura">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Narzędzia_dydaktyczne_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Narzędzia_dydaktyczne" Role="Narzędzia_dydaktyczne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Narzędzia_dydaktyczne">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Przedmiotowy_efekt_kształcenia" Role="Przedmiotowy_efekt_kształcenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Przedmiotowy_efekt_kształcenia">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Treść_programowa_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Treść_programowa" Role="Treść_programowa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treść_programowa">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wymaganie_wstępne_Karta_przedmiotu">
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="0..1" />
+          <End Type="EasyKRKModel.Wymaganie_wstępne" Role="Wymaganie_wstępne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Karta_przedmiotu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Wymaganie_wstępne">
+              <PropertyRef Name="Karta_PrzedmiotuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Karta_przedmiotu_Autor_karty_przedmiotu">
+          <End Type="EasyKRKModel.Autor_karty_przedmiotu" Role="Autor_karty_przedmiotu" Multiplicity="*" />
+          <End Type="EasyKRKModel.Karta_przedmiotu" Role="Karta_przedmiotu" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1150,19 +1150,6 @@
             <EntityTypeMapping TypeName="EasyKRKModel.Grupa_kursów">
               <MappingFragment StoreEntitySet="Grupa kursów">
                 <ScalarProperty Name="ECTS" ColumnName="ECTS" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Karta_przedmiotu">
-            <EntityTypeMapping TypeName="EasyKRKModel.Karta_przedmiotu">
-              <MappingFragment StoreEntitySet="Karta przedmiotu">
-                <ScalarProperty Name="PrzedmiotID" ColumnName="PrzedmiotID" />
-                <ScalarProperty Name="Program_KształceniaID" ColumnName="Program KształceniaID" />
-                <ScalarProperty Name="RodzajPrzedmiotu" ColumnName="RodzajPrzedmiotu" />
-                <ScalarProperty Name="GrupaKursów" ColumnName="GrupaKursów" />
-                <ScalarProperty Name="NazwaAngielska" ColumnName="NazwaAngielska" />
-                <ScalarProperty Name="NazwaPolska" ColumnName="NazwaPolska" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1416,6 +1403,19 @@
                 <ScalarProperty Name="Kompetencji" ColumnName="Kompetencji" />
                 <ScalarProperty Name="Umiejętność" ColumnName="Umiejętność" />
                 <ScalarProperty Name="Wiedza" ColumnName="Wiedza" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karta_przedmiotu">
+            <EntityTypeMapping TypeName="EasyKRKModel.Karta_przedmiotu">
+              <MappingFragment StoreEntitySet="Karta przedmiotu">
+                <ScalarProperty Name="PrzedmiotID" ColumnName="PrzedmiotID" />
+                <ScalarProperty Name="Program_KształceniaID" ColumnName="Program KształceniaID" />
+                <ScalarProperty Name="RodzajPrzedmiotu" ColumnName="RodzajPrzedmiotu" />
+                <ScalarProperty Name="GrupaKursów" ColumnName="GrupaKursów" />
+                <ScalarProperty Name="NazwaAngielska" ColumnName="NazwaAngielska" />
+                <ScalarProperty Name="NazwaPolska" ColumnName="NazwaPolska" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

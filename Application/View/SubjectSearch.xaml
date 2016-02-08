@@ -34,15 +34,13 @@
         <ComboBox Grid.Row="2" Grid.Column="1" 
                   ItemsSource="{Binding Path=WydziałList}" 
                   DisplayMemberPath="Nazwa" 
-                  SelectedValuePath="ID" 
-                  SelectedValue="{Binding Path=WydziałSelected}"/>
+                  SelectedValue="{Binding WydziałSelected}"/>
 
         <Label Content="Kierunek studiów" Grid.Row="3" />
         <ComboBox Grid.Row="3" Grid.Column="1" 
                   ItemsSource="{Binding Path=KierunekList}" 
-                  DisplayMemberPath="Nazwa" 
-                  SelectedValuePath="ID" 
-                  SelectedValue="{Binding Path=KierunekSelected}"/>
+                  DisplayMemberPath="Nazwa"
+                  SelectedValue="{Binding KierunekSelected}"/>
 
         <Label Content="Specjalność" Grid.Row="4" />
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Specjalność}" />
@@ -80,7 +78,7 @@
         <Button Content="Filtruj" Command="{Binding FilterCmd}" Grid.Row="5" Grid.Column="3" Margin="0,10"/>
         <Button Content="Zapisz kartę przedmiotu" Command="{Binding GenerateXmlCmd}" Grid.Row="7" Grid.Column="1" Margin="0,10"/>
 
-        <DataGrid Grid.Row="6" Grid.ColumnSpan="4" ItemsSource="{Binding DataList}" SelectedItem="{Binding DataSelected}"/>
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="4" ItemsSource="{Binding DataList}" SelectedItem="{Binding DataSelected}" />
 
         <Button Content="Dodaj nową kartę przedmiotu"  Click="Button_Click_1" Grid.Row="7" Grid.Column="3" Margin="0,10"/>
 

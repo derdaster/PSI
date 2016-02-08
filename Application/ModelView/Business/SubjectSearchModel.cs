@@ -65,9 +65,9 @@ namespace ModelView.Business
         private string _Nazwisko;
         private string _AdresEmail;
         private CollectionView _WydziałList;
-        private int _WydziałSelected;
+        private Wydział _WydziałSelected;
         private CollectionView _KierunekList;
-        private int _KierunekSelected;
+        private Kierunek _KierunekSelected;
         private StopieńStudiówEnum _StopieńStudiów;
         private FormaStudiówEnum _FormaStudiów;
         private RodzajPrzedmiotuEnum _RodzajPrzedmiotu;
@@ -106,7 +106,7 @@ namespace ModelView.Business
             get { return _WydziałList; }
         }
 
-        public int WydziałSelected
+        public Wydział WydziałSelected
         {
             get { return _WydziałSelected; }
             set
@@ -120,7 +120,7 @@ namespace ModelView.Business
 
         private void OnWydziałChanged()
         {
-            _KierunekList = new CollectionView(DbManager.GetKierunek(WydziałSelected));
+            _KierunekList = new CollectionView(DbManager.GetKierunek(WydziałSelected.ID));
             OnPropertyChanged("KierunekList");
         }
 
@@ -129,7 +129,7 @@ namespace ModelView.Business
             get { return _KierunekList; }
         }
 
-        public int KierunekSelected
+        public Kierunek KierunekSelected
         {
             get { return _KierunekSelected; }
             set
@@ -307,14 +307,33 @@ namespace ModelView.Business
         private bool FilterData(ExSubjectCard item)
         {
             if (!String.IsNullOrWhiteSpace(NazwaPrzedmiotuPl) && !item.NazwaPolska.ToLower().Contains(NazwaPrzedmiotuPl.ToLower()))
-            {
-                return false;
-            }
+            { return false; }
 
             if (!String.IsNullOrWhiteSpace(NazwaPrzedmiotuAng) && !item.NazwaAngielska.ToLower().Contains(NazwaPrzedmiotuAng.ToLower()))
-            {
-                return false;
-            }
+            { return false; }
+
+            if (WydziałSelected != null && !item.Wydział.Equals(WydziałSelected.Nazwa))
+            { return false; }
+
+            if (KierunekSelected != null && !item.Kierunek.Equals(KierunekSelected.Nazwa))
+            { return false; }
+
+            if (!String.IsNullOrWhiteSpace(Specjalność) && !item.Specjalność.ToLower().Contains(Specjalność.ToLower()))
+            { return false; }
+
+            if (StopieńStudiów != 0 && item.Stopień != StopieńStudiów)
+            { return false; }
+
+            if (FormaStudiów != 0 && item.FormaStudiów != FormaStudiów)
+            { return false; }
+
+            if (RodzajPrzedmiotu != 0 && item.RodzajPrzedmiotu != RodzajPrzedmiotu)
+            { return false; }
+
+            if (!String.IsNullOrWhiteSpace(KodPrzedmiotu) && !item.Kod.ToLower().Contains(KodPrzedmiotu.ToLower()))
+            { return false; }
+
+            // grupa kursów
 
             return true;
         }

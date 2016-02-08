@@ -88,6 +88,9 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WizardPage\CardSubjectRequirements.xaml.cs">
+      <DependentUpon>CardSubjectRequirements.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WizardPage\CardSubjectInfo.xaml.cs">
       <DependentUpon>CardSubjectInfo.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
     <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WizardPage\CardSubjectRequirements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WizardPage\CardSubjectInfo.xaml">
       <SubType>Designer</SubType>

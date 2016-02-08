@@ -25,7 +25,7 @@ namespace Model.Data
             }
         }
 
-        public static Przedmiot getPrzedmiot(string kodPrzedmiotu)
+        public static Przedmiot GetPrzedmiot(string kodPrzedmiotu)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -41,23 +41,15 @@ namespace Model.Data
             }
         }
 
-        public static Autor_karty_przedmiotu getAutor(string imie,string nazwisko,string mail)
+        public static Autor_karty_przedmiotu GetAutor(string imie, string nazwisko, string mail)
         {
             using (var ctx = new DbEasyKRK())
             {
-                try
-                {
-                    return ctx.Autor_karty_przedmiotu.Where(x => x.Imię.Equals(imie) && x.Nazwisko.Equals(nazwisko) && x.Email.Equals(mail)).ToList().First();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-
+                return ctx.Autor_karty_przedmiotu.Where(x => x.Imię.Equals(imie) && x.Nazwisko.Equals(nazwisko) && x.Email.Equals(mail)).FirstOrDefault();
             }
         }
 
-        public static List<ExSpecjalnosc> getSpecjalnosci(int idKierunek)
+        public static List<ExSpecjalnosc> GetSpecjalnosci(int idKierunek)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -65,18 +57,11 @@ namespace Model.Data
             }
         }
 
-        public static ExSpecjalnosc getProgramKsztalcenia(int idKierunek, int poziomKsztalcenia, int formaStudiow)
+        public static ExSpecjalnosc GetProgramKsztalcenia(int idKierunek, int poziomKsztalcenia, int formaStudiow)
         {
             using (var ctx = new DbEasyKRK())
             {
-                try
-                {
-                    return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek && x.PoziomKształcenia == poziomKsztalcenia && x.FormaStudiów == formaStudiow).ToList().Select(x => new ExSpecjalnosc(x)).ToList().First();
-                }
-                catch (Exception)
-                {
-                    return new ExSpecjalnosc(0);
-                }
+                return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek && x.PoziomKształcenia == poziomKsztalcenia && x.FormaStudiów == formaStudiow).ToList().Select(x => new ExSpecjalnosc(x)).FirstOrDefault();
             }
         }
 
@@ -274,7 +259,7 @@ namespace Model.Data
                 karta.Autor_karty_przedmiotu.Add(autor);
                 ctx.Entry(karta).State = System.Data.Entity.EntityState.Modified;
                 ctx.SaveChanges();
-                
+
             }
         }
 

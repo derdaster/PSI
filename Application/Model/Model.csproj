@@ -164,6 +164,7 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Enums.cs" />
+    <Compile Include="Entities\ExSpecjalnosc.cs" />
     <Compile Include="Entities\ExSubjectCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

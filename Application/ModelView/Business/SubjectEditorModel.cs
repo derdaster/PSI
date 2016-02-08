@@ -55,7 +55,8 @@ namespace ModelView.Business
 
         private string _NazwaPrzedmiotuPl;
         private string _NazwaPrzedmiotuAng;
-        private string _Specjalność;
+        private CollectionView _SpecjalnośćList;
+        private int _SpecjalnośćSelected;
         private string _KodPrzedmiotu;
         private string _Imię;
         private string _Nazwisko;
@@ -129,21 +130,32 @@ namespace ModelView.Business
                 if (value == _KierunekSelected) return;
                 _KierunekSelected = value;
                 OnPropertyChanged("KierunekSelected");
+                OnKierunekChanged();
             }
         }
 
-
-        public string Specjalność
+        public CollectionView SpecjalnośćList
         {
-            get { return _Specjalność; }
+            get { return _SpecjalnośćList; }
+        }
+
+        public int SpecjalnośćSelected
+        {
+            get { return _SpecjalnośćSelected; }
             set
             {
-                if (value == _Specjalność) return;
-                _Specjalność = value;
-                OnPropertyChanged("Specjalność");
+                if (value == _SpecjalnośćSelected) return;
+                _SpecjalnośćSelected = value;
+                OnPropertyChanged("SpecjalnośćSelected");
+                
             }
         }
 
+        private void OnKierunekChanged()
+        {
+            _SpecjalnośćList = new CollectionView(DbManager.getProgramyKsztalcenia(KierunekSelected));
+            OnPropertyChanged("SpecjalnośćList");
+        }
 
         public string KodPrzedmiotu
         {

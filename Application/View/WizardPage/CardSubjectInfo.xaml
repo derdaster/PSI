@@ -57,10 +57,10 @@
 
         <Label Content="Specjalność" Grid.Row="5" />
         <ComboBox Grid.Row="5" Grid.Column="1" 
-                  ItemsSource="{Binding Path=Specjalność}" 
-                  DisplayMemberPath="Nazwa" 
-                  SelectedValuePath="ID" 
-                  SelectedValue="{Binding Path=SpecjalnoscSelected}"/>
+                  ItemsSource="{Binding Path=SpecjalnośćList}" 
+                  DisplayMemberPath="Specjalnosc" 
+                  SelectedValuePath="Id" 
+                  SelectedValue="{Binding Path=SpecjalnośćSelected}"/>
 
         <Label Content="Stopień studiów" Grid.Row="6" />
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal" >

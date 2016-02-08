@@ -78,6 +78,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\EnumBooleanConverter.cs" />
     <Compile Include="SubjectEditorWizard.xaml.cs">
       <DependentUpon>SubjectEditorWizard.xaml</DependentUpon>
     </Compile>
@@ -151,6 +152,7 @@
     <ProjectReference Include="..\ModelView\ModelView.csproj">
       <Project>{7da26395-e2b3-4367-a246-4f76e3ff9b0f}</Project>
       <Name>ModelView</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

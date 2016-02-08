@@ -252,6 +252,17 @@ namespace ModelView.Business
         }
 
 
+        public string WymaganiaWstępne
+        {
+            get { return _AdresEmail; }
+            set
+            {
+                if (value == _AdresEmail) return;
+                _AdresEmail = value;
+                OnPropertyChanged("AdresEmail");
+            }
+        }
+
         #endregion
 
         public SubjectEditorModel()
@@ -269,7 +280,8 @@ namespace ModelView.Business
         {
             int ProgramId = DbManager.getProgramKsztalcenia((int)KierunekSelected, (int)StopieńStudiów, (int)FormaStudiów).Id;
             Przedmiot przedmiot = DbManager.getPrzedmiot(_KodPrzedmiotu);
-            if (ProgramId == null)
+            Autor_karty_przedmiotu autor = DbManager.getAutor(Imię, Nazwisko, AdresEmail);
+            if (ProgramId == 0)
             {
                 MessageBox.Show("Nie znaleziono programu kształcenia");
             }
@@ -290,7 +302,8 @@ namespace ModelView.Business
                         PrzedmiotID = przedmiot.ID
                     };
 
-                    DbManager.AddKartaPrzedmiotu(karta);
+                    karta=DbManager.AddKartaPrzedmiotu(karta);
+                    DbManager.JoinAutorWithKarta(karta, autor);
 
                     MessageBox.Show("Dodano kartę przedmiotu");
                 }

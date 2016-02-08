@@ -41,6 +41,22 @@ namespace Model.Data
             }
         }
 
+        public static Autor_karty_przedmiotu getAutor(string imie,string nazwisko,string mail)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                try
+                {
+                    return ctx.Autor_karty_przedmiotu.Where(x => x.Imię.Equals(imie) && x.Nazwisko.Equals(nazwisko) && x.Email.Equals(mail)).ToList().First();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+
+            }
+        }
+
         public static List<ExSpecjalnosc> getSpecjalnosci(int idKierunek)
         {
             using (var ctx = new DbEasyKRK())
@@ -59,7 +75,7 @@ namespace Model.Data
                 }
                 catch (Exception)
                 {
-                    return null;
+                    return new ExSpecjalnosc(0);
                 }
             }
         }
@@ -103,12 +119,24 @@ namespace Model.Data
             return GetKartyPrzedmiotu().Where(x => filter(x)).ToList();
         }
 
-        public static void AddKartaPrzedmiotu(Karta_przedmiotu karta)
+        public static Karta_przedmiotu AddKartaPrzedmiotu(Karta_przedmiotu karta)
         {
             using (var ctx = new DbEasyKRK())
             {
-                ctx.Karta_przedmiotu.Add(karta);
+                Karta_przedmiotu dodanaKarta = ctx.Karta_przedmiotu.Add(karta);
                 ctx.SaveChanges();
+                return dodanaKarta;
+            }
+        }
+
+        public static void JoinAutorWithKarta(Karta_przedmiotu karta, Autor_karty_przedmiotu autor)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                karta.Autor_karty_przedmiotu.Add(autor);
+                ctx.Entry(karta).State = System.Data.Entity.EntityState.Modified;
+                ctx.SaveChanges();
+                
             }
         }
     }

@@ -17,6 +17,11 @@ namespace Model.Entities
             this.Specjalnosc = program.Specjalność;
         }
 
+        public ExSpecjalnosc(int p)
+        {
+            this.Id = p;
+        }
+
  
     }
 }

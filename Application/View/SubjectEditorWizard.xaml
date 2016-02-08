@@ -8,37 +8,13 @@
         <xctk:Wizard Name="SubjectCardWizard" FinishButtonClosesWindow="True" HelpButtonVisibility="Collapsed" >
             <local:CardSubjectInfo x:Name="KartaPrzedmiotuPage" PageType="Interior"
                                    Title="Karta przedmiotu - podstawowe informacje"
-                                   NextPage="{Binding ElementName=Page2}"
+                                   NextPage="{Binding ElementName=WymaganiaWstepnePage}"
                                    CanSelectNextPage="True"/>
-
-
-
-            <xctk:WizardPage x:Name="Page2" PageType="Interior"
+            
+            <local:CardSubjectRequirements x:Name="WymaganiaWstepnePage" PageType="Interior"
                                    Title="Karta przedmiotu - wynagania wstępne"
-                                   NextPage="{Binding ElementName=Page3}"
-                                   PreviousPage="{Binding ElementName=KartaPrzedmiotuPage}">
-                <Grid>
-                    <Label Content="Wymagania wstęne w zakresie wiedzy, umiejętności i innych kompetencji" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top"/>
-                    <ListView x:Name="WymaganiaWstępne" HorizontalAlignment="Left" Height="196" Margin="21,51,0,0" VerticalAlignment="Top" Width="349">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Nazwa}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <Button Content="Usuń" HorizontalAlignment="Left" Margin="384,51,0,0" VerticalAlignment="Top" Width="39"/>
-                    <Button Content="Dodaj" HorizontalAlignment="Left" Margin="384,379,0,0" VerticalAlignment="Top" Width="39"/>
-                    <RichTextBox HorizontalAlignment="Left" Height="85" Margin="21,380,0,0" VerticalAlignment="Top" Width="349">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text="RichTextBox"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-
-
-                </Grid>
-            </xctk:WizardPage>
+                                   Description="Wymagania wstępne w zakresie wiedzy, umiejętności i innych kompetencji"/>
+                
             <xctk:WizardPage x:Name="Page3" PageType="Interior"
                                    Title="Karta przedmiotu - cele przedmiotu"
                                    Description="This is the second page in the process">

@@ -19,15 +19,13 @@ namespace Model.Entities
         public FormaStudiówEnum FormaStudiów { get; set; }
         public RodzajPrzedmiotuEnum RodzajPrzedmiotu { get; set; }
         public string GrupaKursów { get; set; }
+    }
 
-        public ExSubjectCard()
-        {
-        }
 
-        public ExSubjectCard(Karta_przedmiotu kp)
-        {
-            this.NazwaPolska = kp.NazwaPolska;
-            this.NazwaAngielska = kp.NazwaAngielska;
-        }
+    public class Wymaganie
+    {
+        public int ID { get; set; }
+        public string Lp { get { return ID.ToString(); } }
+        public string Nazwa { get; set; }
     }
 }

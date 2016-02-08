@@ -21,6 +21,7 @@ namespace ModelView.Business
     {
         public event EventHandler SaveCompleted;
         public ICommand FilterCmd { get; set; }
+        public ICommand GenerateXmlCmd { get; set; }
 
         #region Script
 
@@ -73,6 +74,7 @@ namespace ModelView.Business
         private bool _GrupaKursów;
 
         private ObservableCollection<ExSubjectCard> _DataList;
+        private ExSubjectCard _DataSelected;
 
 
         public string NazwaPrzedmiotuPl
@@ -257,13 +259,38 @@ namespace ModelView.Business
             }
         }
 
+        public ExSubjectCard DataSelected
+        {
+            get { return _DataSelected; }
+            set
+            {
+                if (value == _DataSelected) return;
+                _DataSelected = value;
+                OnPropertyChanged("DataSelected");
+            }
+        }
+
 
         #endregion
 
         public SubjectSearchModel()
         {
             FilterCmd = new RelayCommand(par => Filter());
+            GenerateXmlCmd = new RelayCommand(par => GenerateXmlFile());
             Init();
+        }
+
+        private void GenerateXmlFile()
+        {
+            if (DataSelected == null)
+            {
+                MessageBox.Show("Musisz zaznaczyć kartę przedmiotu, którą chcesz zapisać");
+                return;
+            }
+
+            writeToXml(DataSelected);
+
+            MessageBox.Show("Karta przedmiotu została zapisana");
         }
 
         private void Init()
@@ -275,7 +302,6 @@ namespace ModelView.Business
         private void Filter()
         {
             DataList = new ObservableCollection<ExSubjectCard>(DbManager.GetKartyPrzedmiotuBy(FilterData));
-            writeToXml();
         }
 
         private bool FilterData(ExSubjectCard item)
@@ -289,7 +315,7 @@ namespace ModelView.Business
             {
                 return false;
             }
-            
+
             return true;
         }
 
@@ -301,12 +327,11 @@ namespace ModelView.Business
             }
         }
 
-        private void writeToXml()
+        private void writeToXml(ExSubjectCard kartaPrzedmiotu)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Users\\master\\Documents\\studia\\Materialy_Projekt_Hnatkowska\\test.xml");
-            ExSubjectCard kartaPrzedmiotu=DbManager.GetKartyPrzedmiotu().First();
+            System.IO.StreamWriter file = new System.IO.StreamWriter(@"D:\test.xml");
             XElement kartaXML = new XElement("Karta");
-            kartaXML.Add(new XElement("Nazwa_polska",kartaPrzedmiotu.NazwaPolska));
+            kartaXML.Add(new XElement("Nazwa_polska", kartaPrzedmiotu.NazwaPolska));
             kartaXML.Add(new XElement("Nazwa_angielska", kartaPrzedmiotu.NazwaAngielska));
             kartaXML.Add(new XElement("Rodzaj_przedmiotu", kartaPrzedmiotu.RodzajPrzedmiotu));
             kartaXML.Add(new XElement("Grupa_kursow", kartaPrzedmiotu.GrupaKursów));
@@ -426,7 +451,7 @@ namespace ModelView.Business
 
             file.WriteLine(kartaXML);
             file.Close();
-        
+
         }
     }
 }

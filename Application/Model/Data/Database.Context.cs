@@ -30,7 +30,6 @@ namespace Model.Data
         public virtual DbSet<Forma_studiów> Forma_studiów { get; set; }
         public virtual DbSet<Forma_zajęć> Forma_zajęć { get; set; }
         public virtual DbSet<Grupa_kursów> Grupa_kursów { get; set; }
-        public virtual DbSet<Karta_przedmiotu> Karta_przedmiotu { get; set; }
         public virtual DbSet<Kierunek> Kierunek { get; set; }
         public virtual DbSet<Kierunkowy_efekt_kształcenia> Kierunkowy_efekt_kształcenia { get; set; }
         public virtual DbSet<Kurs> Kurs { get; set; }
@@ -58,5 +57,6 @@ namespace Model.Data
         public virtual DbSet<Wydział> Wydział { get; set; }
         public virtual DbSet<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
         public virtual DbSet<Zakres_PEK> Zakres_PEK { get; set; }
+        public virtual DbSet<Karta_przedmiotu> Karta_przedmiotu { get; set; }
     }
 }

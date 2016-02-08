@@ -46,16 +46,30 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                return ctx.Karta_przedmiotu.ToList().Select(x => new ExSubjectCard(x)).ToList();
+                return (from kp in ctx.Karta_przedmiotu
+                        join pk in ctx.Program_kształcenia on kp.Program_KształceniaID equals pk.ID
+                        join p in ctx.Przedmiot on kp.PrzedmiotID equals p.ID
+                        join k in ctx.Kierunek on pk.KierunekID equals k.ID
+                        join w in ctx.Wydział on k.WydziałID equals w.ID
+                        select new ExSubjectCard()
+                            {
+                                NazwaPolska = kp.NazwaPolska,
+                                NazwaAngielska = kp.NazwaAngielska,
+                                FormaStudiów = (FormaStudiówEnum)pk.FormaStudiów,
+                                RodzajPrzedmiotu = (RodzajPrzedmiotuEnum)kp.RodzajPrzedmiotu,
+                                Stopień = (StopieńStudiówEnum)pk.PoziomKształcenia,
+                                Kod = p.Kod,
+                                Kierunek = k.Nazwa,
+                                Wydział = w.Nazwa,
+                                Specjalność = pk.Specjalność
+                            }
+                        ).ToList();
             }
         }
 
-        public static List<ExSubjectCard> GetKartyPrzedmiotuBy(Func<Karta_przedmiotu, bool> filter) // dodać filtr tylko na użytkownika
+        public static List<ExSubjectCard> GetKartyPrzedmiotuBy(Func<ExSubjectCard, bool> filter) // dodać filtr tylko na użytkownika
         {
-            using (var ctx = new DbEasyKRK())
-            {
-                return ctx.Karta_przedmiotu.ToList().Where(x => filter(x)).Select(x => new ExSubjectCard(x)).ToList();
-            }
+            return GetKartyPrzedmiotu().Where(x => filter(x)).ToList();
         }
 
         public static void AddKartaPrzedmiotu(Karta_przedmiotu karta)

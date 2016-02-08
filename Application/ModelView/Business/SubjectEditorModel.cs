@@ -1,4 +1,5 @@
 ﻿using Model.Data;
+using Model.Entities;
 using ModelView.Base;
 using ModelView.Utils;
 using System;
@@ -63,7 +64,10 @@ namespace ModelView.Business
         private int _WydziałSelected;
         private CollectionView _KierunekList;
         private int _KierunekSelected;
-
+        private StopieńStudiówEnum _StopieńStudiów;
+        private FormaStudiówEnum _FormaStudiów;
+        private RodzajPrzedmiotuEnum _RodzajPrzedmiotu;
+        private bool _GrupaKursów;
 
         public string NazwaPrzedmiotuPl
         {
@@ -188,6 +192,52 @@ namespace ModelView.Business
             }
         }
 
+        public StopieńStudiówEnum StopieńStudiów
+        {
+            get { return _StopieńStudiów; }
+            set
+            {
+                if (value == _StopieńStudiów) return;
+                _StopieńStudiów = value;
+                OnPropertyChanged("StopieńStudiów");
+            }
+        }
+
+
+        public FormaStudiówEnum FormaStudiów
+        {
+            get { return _FormaStudiów; }
+            set
+            {
+                if (value == _FormaStudiów) return;
+                _FormaStudiów = value;
+                OnPropertyChanged("FormaStudiów");
+            }
+        }
+
+
+        public RodzajPrzedmiotuEnum RodzajPrzedmiotu
+        {
+            get { return _RodzajPrzedmiotu; }
+            set
+            {
+                if (value == _RodzajPrzedmiotu) return;
+                _RodzajPrzedmiotu = value;
+                OnPropertyChanged("RodzajPrzedmiotu");
+            }
+        }
+
+
+        public bool GrupaKursów
+        {
+            get { return _GrupaKursów; }
+            set
+            {
+                if (value == _GrupaKursów) return;
+                _GrupaKursów = value;
+                OnPropertyChanged("GrupaKursów");
+            }
+        }
 
 
         #endregion

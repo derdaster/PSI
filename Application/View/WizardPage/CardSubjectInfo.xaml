@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+                 xmlns:local="clr-namespace:View.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="500">
     <Grid>
+        <Grid.Resources>
+            <local:EnumBooleanConverter x:Key="enumBooleanConverter" />
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -56,21 +60,21 @@
 
         <Label Content="Stopień studiów" Grid.Row="6" />
         <StackPanel Grid.Column="1" Grid.Row="6" Orientation="Horizontal" >
-            <RadioButton Content="I stopień" VerticalAlignment="Center"   />
-            <RadioButton Content="II stopień"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton Content="I stopień" VerticalAlignment="Center"  IsChecked="{Binding StopieńStudiów, Converter={StaticResource enumBooleanConverter}, ConverterParameter=StopieńI}" />
+            <RadioButton Content="II stopień"  Margin="5,0,0,0" VerticalAlignment="Center" IsChecked="{Binding StopieńStudiów, Converter={StaticResource enumBooleanConverter}, ConverterParameter=StopieńII}"/>
         </StackPanel>
 
         <Label Content="Forma studiów" Grid.Row="7" />
         <StackPanel Grid.Column="1" Grid.Row="7" Orientation="Horizontal" >
-            <RadioButton Content="stacjonarna" VerticalAlignment="Center" />
-            <RadioButton Content="niestacjonarna"  Margin="5,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton Content="stacjonarna" VerticalAlignment="Center" IsChecked="{Binding FormaStudiów, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Stacjonarna}" />
+            <RadioButton Content="niestacjonarna"  Margin="5,0,0,0" VerticalAlignment="Center" IsChecked="{Binding FormaStudiów, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Niestacjonarna}"/>
         </StackPanel>
 
         <Label Content="Rodzaj przedmiotu" Grid.Row="8"  />
         <StackPanel Grid.Column="1" Grid.Row="8" >
-            <RadioButton Content="obowiązkowy" Margin="0,5" />
-            <RadioButton Content="wybieralny"  Margin="0,5"/>
-            <RadioButton Content="ogólnouczelniany" Margin="0,5" />
+            <RadioButton Content="obowiązkowy" Margin="0,5" IsChecked="{Binding RodzajPrzedmiotu, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Obowiązkowy}"/>
+            <RadioButton Content="wybieralny"  Margin="0,5" IsChecked="{Binding RodzajPrzedmiotu, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Wybieralny}"/>
+            <RadioButton Content="ogólnouczelniany" Margin="0,5"  IsChecked="{Binding RodzajPrzedmiotu, Converter={StaticResource enumBooleanConverter}, ConverterParameter=Ogólnouczelniany}" />
         </StackPanel>
 
         <Label Content="Kod przedmiotu" Grid.Row="9"  />

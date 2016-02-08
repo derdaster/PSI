@@ -19,6 +19,5 @@ namespace Model.Data
         public Nullable<int> Karta_PrzedmiotuID { get; set; }
     
         public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
-        public virtual Karta_przedmiotu Karta_przedmiotu1 { get; set; }
     }
 }

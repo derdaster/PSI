@@ -24,4 +24,10 @@ namespace Model.Entities
         Wybieralny = 2,
         Ogólnouczelniany = 3
     }
+
+    public enum GrupaKursowEnum
+    {
+        tak = 1,
+        nie = 2
+    }
 }

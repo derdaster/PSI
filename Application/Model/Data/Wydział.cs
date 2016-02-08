@@ -14,7 +14,16 @@ namespace Model.Data
     
     public partial class Wydział
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Wydział()
+        {
+            this.Kierunek = new HashSet<Kierunek>();
+        }
+    
         public int ID { get; set; }
         public string Nazwa { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kierunek> Kierunek { get; set; }
     }
 }

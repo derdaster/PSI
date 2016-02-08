@@ -23,6 +23,7 @@ namespace Model.Data
             this.Treść_programowa = new HashSet<Treść_programowa>();
             this.Wymaganie_wstępne = new HashSet<Wymaganie_wstępne>();
             this.Autor_karty_przedmiotu = new HashSet<Autor_karty_przedmiotu>();
+            this.Przedmiotowy_efekt_kształcenia = new HashSet<Przedmiotowy_efekt_kształcenia>();
         }
     
         public int ID { get; set; }
@@ -31,6 +32,7 @@ namespace Model.Data
         public bool GrupaKursów { get; set; }
         public Nullable<int> RodzajPrzedmiotu { get; set; }
         public Nullable<int> Program_KształceniaID { get; set; }
+        public Nullable<int> PrzedmiotID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cel_przedmiotu> Cel_przedmiotu { get; set; }
@@ -44,5 +46,9 @@ namespace Model.Data
         public virtual ICollection<Wymaganie_wstępne> Wymaganie_wstępne { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Autor_karty_przedmiotu> Autor_karty_przedmiotu { get; set; }
+        public virtual Program_kształcenia Program_kształcenia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Przedmiotowy_efekt_kształcenia> Przedmiotowy_efekt_kształcenia { get; set; }
+        public virtual Przedmiot Przedmiot { get; set; }
     }
 }

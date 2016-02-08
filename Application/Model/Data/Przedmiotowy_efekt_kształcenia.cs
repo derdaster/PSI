@@ -19,5 +19,9 @@ namespace Model.Data
         public string Nazwa { get; set; }
         public Nullable<int> Zakres { get; set; }
         public string Kod { get; set; }
+        public Nullable<int> Karta_PrzedmiotuID { get; set; }
+    
+        public virtual Karta_przedmiotu Karta_przedmiotu { get; set; }
+        public virtual Przedmiot Przedmiot { get; set; }
     }
 }

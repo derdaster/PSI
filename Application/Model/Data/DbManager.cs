@@ -25,6 +25,14 @@ namespace Model.Data
             }
         }
 
+        public static List<Program_kształcenia> getProgramyKsztalcenia(int idKierunek)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek).ToList();
+            }
+        }
+
         public static List<Kierunek> GetKierunek(int idWydział)
         {
             using (var ctx = new DbEasyKRK())

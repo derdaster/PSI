@@ -14,9 +14,21 @@ namespace Model.Data
     
     public partial class Przedmiot
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Przedmiot()
+        {
+            this.Przedmiotowy_efekt_kształcenia = new HashSet<Przedmiotowy_efekt_kształcenia>();
+            this.Karta_przedmiotu = new HashSet<Karta_przedmiotu>();
+        }
+    
         public int ID { get; set; }
         public int Grupa_kursówID { get; set; }
         public string Nazwa { get; set; }
         public string Kod { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Przedmiotowy_efekt_kształcenia> Przedmiotowy_efekt_kształcenia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Karta_przedmiotu> Karta_przedmiotu { get; set; }
     }
 }

@@ -14,11 +14,22 @@ namespace Model.Data
     
     public partial class Program_kształcenia
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Program_kształcenia()
+        {
+            this.Karta_przedmiotu = new HashSet<Karta_przedmiotu>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> PoziomKształcenia { get; set; }
         public Nullable<int> ProfilKształcenia { get; set; }
         public Nullable<int> FormaStudiów { get; set; }
         public string Język { get; set; }
         public string Specjalność { get; set; }
+        public Nullable<int> KierunekID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Karta_przedmiotu> Karta_przedmiotu { get; set; }
+        public virtual Kierunek Kierunek { get; set; }
     }
 }

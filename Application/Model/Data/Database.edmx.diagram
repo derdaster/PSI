@@ -45,6 +45,12 @@
         <AssociationConnector Association="EasyKRKModel.FK_Wymaganie_wstępne_Karta_przedmiotu" />
         <AssociationConnector Association="EasyKRKModel.FK_Temat_zajęć_Treść_programowa" />
         <AssociationConnector Association="EasyKRKModel.Karta_przedmiotu_Autor_karty_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Karta_przedmiotu_Program_kształcenia" />
+        <AssociationConnector Association="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Karta_przedmiotu" />
+        <AssociationConnector Association="EasyKRKModel.FK_Kierunek_Wydział" />
+        <AssociationConnector Association="EasyKRKModel.FK_Program_kształcenia_Kierunek" />
+        <AssociationConnector Association="EasyKRKModel.FK_Przedmiotowy_efekt_kształcenia_Przedmiot" />
+        <AssociationConnector Association="EasyKRKModel.FK_Karta_przedmiotu_Przedmiot" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,8 +14,18 @@ namespace Model.Data
     
     public partial class Kierunek
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kierunek()
+        {
+            this.Program_kształcenia = new HashSet<Program_kształcenia>();
+        }
+    
         public int ID { get; set; }
         public int WydziałID { get; set; }
         public string Nazwa { get; set; }
+    
+        public virtual Wydział Wydział { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Program_kształcenia> Program_kształcenia { get; set; }
     }
 }

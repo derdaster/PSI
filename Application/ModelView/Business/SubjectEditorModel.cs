@@ -147,13 +147,13 @@ namespace ModelView.Business
                 if (value == _SpecjalnośćSelected) return;
                 _SpecjalnośćSelected = value;
                 OnPropertyChanged("SpecjalnośćSelected");
-                
+
             }
         }
 
         private void OnKierunekChanged()
         {
-            _SpecjalnośćList = new CollectionView(DbManager.getProgramyKsztalcenia(KierunekSelected));
+            _SpecjalnośćList = new CollectionView(DbManager.getSpecjalnosci(KierunekSelected));
             OnPropertyChanged("SpecjalnośćList");
         }
 
@@ -267,18 +267,33 @@ namespace ModelView.Business
 
         public void Save()
         {
-            var karta = new Karta_przedmiotu()
+            int ProgramId = DbManager.getProgramKsztalcenia((int)KierunekSelected, (int)StopieńStudiów, (int)FormaStudiów).Id;
+            Przedmiot przedmiot = DbManager.getPrzedmiot(_KodPrzedmiotu);
+            if (ProgramId == null)
             {
-                NazwaPolska = NazwaPrzedmiotuPl,
-                NazwaAngielska = NazwaPrzedmiotuAng,
-                GrupaKursów = true,
-                RodzajPrzedmiotu = 1,
-                Program_KształceniaID = 1
-            };
+                MessageBox.Show("Nie znaleziono programu kształcenia");
+            }
+            else
+                if (przedmiot == null)
+                {
+                    MessageBox.Show("Nie znaleziono przedmiotu");
+                }
+                else
+                {
+                    var karta = new Karta_przedmiotu()
+                    {
+                        NazwaPolska = NazwaPrzedmiotuPl,
+                        NazwaAngielska = NazwaPrzedmiotuAng,
+                        GrupaKursów = true,
+                        RodzajPrzedmiotu = (int)RodzajPrzedmiotu,
+                        Program_KształceniaID = ProgramId,
+                        PrzedmiotID = przedmiot.ID
+                    };
 
-            DbManager.AddKartaPrzedmiotu(karta);
+                    DbManager.AddKartaPrzedmiotu(karta);
 
-            MessageBox.Show("Dodano kartę przedmiotu");
+                    MessageBox.Show("Dodano kartę przedmiotu");
+                }
         }
 
         protected virtual void RaiseLoginCompleted()

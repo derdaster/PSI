@@ -25,11 +25,42 @@ namespace Model.Data
             }
         }
 
-        public static List<ExSpecjalnosc> getProgramyKsztalcenia(int idKierunek)
+        public static Przedmiot getPrzedmiot(string kodPrzedmiotu)
         {
             using (var ctx = new DbEasyKRK())
             {
-                return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek).ToList().Select(x => new ExSpecjalnosc(x) ).ToList();
+                try
+                {
+                    return ctx.Przedmiot.Where(x => x.Kod.Equals(kodPrzedmiotu)).ToList().First();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+
+            }
+        }
+
+        public static List<ExSpecjalnosc> getSpecjalnosci(int idKierunek)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek).ToList().Select(x => new ExSpecjalnosc(x)).ToList();
+            }
+        }
+
+        public static ExSpecjalnosc getProgramKsztalcenia(int idKierunek, int poziomKsztalcenia, int formaStudiow)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                try
+                {
+                    return ctx.Program_kształcenia.Where(x => x.KierunekID == idKierunek && x.PoziomKształcenia == poziomKsztalcenia && x.FormaStudiów == formaStudiow).ToList().Select(x => new ExSpecjalnosc(x)).ToList().First();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
         }
 

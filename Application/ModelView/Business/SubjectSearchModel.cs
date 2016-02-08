@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace ModelView.Business
 {
@@ -274,6 +275,7 @@ namespace ModelView.Business
         private void Filter()
         {
             DataList = new ObservableCollection<ExSubjectCard>(DbManager.GetKartyPrzedmiotuBy(FilterData));
+            writeToXml();
         }
 
         private bool FilterData(ExSubjectCard item)
@@ -297,6 +299,49 @@ namespace ModelView.Business
             {
                 SaveCompleted(this, EventArgs.Empty);
             }
+        }
+
+        private void writeToXml()
+        {
+            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\Users\\master\\Documents\\studia\\Materialy_Projekt_Hnatkowska\\test.xml");
+            ExSubjectCard kartaPrzedmiotu=DbManager.GetKartyPrzedmiotu().First();
+            XElement kartaXML = new XElement("Karta");
+            kartaXML.Add(new XElement("Nazwa_polska",kartaPrzedmiotu.NazwaPolska));
+            kartaXML.Add(new XElement("Nazwa_angielska", kartaPrzedmiotu.NazwaAngielska));
+            kartaXML.Add(new XElement("Rodzaj_przedmiotu", kartaPrzedmiotu.RodzajPrzedmiotu));
+            kartaXML.Add(new XElement("Grupa_kursow", kartaPrzedmiotu.GrupaKursów));
+            kartaXML.Add(new XElement("Forma_studiow", kartaPrzedmiotu.FormaStudiów));
+            kartaXML.Add(new XElement("Stopien_studiow", kartaPrzedmiotu.Stopień));
+            kartaXML.Add(new XElement("Kod_przedmiotu", kartaPrzedmiotu.Kod));
+            kartaXML.Add(new XElement("Kierunek", kartaPrzedmiotu.Kierunek));
+            kartaXML.Add(new XElement("Specjalnosc", kartaPrzedmiotu.Specjalność));
+
+            List<Wymaganie_wstępne> wymagania = DbManager.getWymagania(1);
+            List<Cel_przedmiotu> cele = DbManager.getCele(1);
+            List<Narzędzia_dydaktyczne> narzędzie = DbManager.getNarzędzia(1);
+            XElement tree = new XElement("Wymagania_wstepne");
+            int i = 0;
+            foreach (var element in wymagania)
+            {
+                i++;
+                tree.Add(new XElement("Wymaganie_" + i.ToString(), element.Nazwa));
+
+            }
+            kartaXML.Add(tree);
+
+            tree = new XElement("Cele_przedmiotu");
+            i = 0;
+            foreach (Cel_przedmiotu element in cele)
+            {
+                i++;
+                tree.Add(new XElement("Cel_" + i.ToString(), element.Nazwa));
+
+            }
+            kartaXML.Add(tree);
+
+            file.WriteLine(kartaXML);
+            file.Close();
+        
         }
     }
 }

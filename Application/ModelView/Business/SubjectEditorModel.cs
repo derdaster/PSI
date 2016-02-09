@@ -342,6 +342,15 @@ namespace ModelView.Business
 
             karta = DbManager.AddKartaPrzedmiotu(karta);
             DbManager.JoinAutorWithKarta(karta, autor);
+            List<Wymaganie_wstępne> wymagania=new List<Wymaganie_wstępne>();
+            foreach (var element in WymaganiaList)
+            {
+                Wymaganie_wstępne nowe=new Wymaganie_wstępne();
+                nowe.Karta_PrzedmiotuID=karta.ID;
+                nowe.Nazwa=element.Nazwa.ToString();
+                wymagania.Add(nowe);
+            }
+            DbManager.AddMultipleWymaganiaWstępne(wymagania);
 
             MessageBox.Show("Dodano kartę przedmiotu");
         }

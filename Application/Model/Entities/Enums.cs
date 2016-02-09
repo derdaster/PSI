@@ -30,7 +30,7 @@ namespace Model.Entities
 
     public enum GrupaKursowEnum
     {
-        tak = 1,
-        nie = 2
+        Tak = 1,
+        Nie = 2
     }
 }

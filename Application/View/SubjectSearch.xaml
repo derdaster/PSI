@@ -80,7 +80,7 @@
         <Button Content="Filtruj" Command="{Binding FilterCmd}" Grid.Row="5" Grid.Column="3" Margin="0,10" />
         <Button Content="Zapisz kartę przedmiotu" Command="{Binding GenerateXmlCmd}" Grid.Row="7" Grid.Column="1" Margin="0,10"/>
 
-        <DataGrid Grid.Row="6" Grid.ColumnSpan="4" ItemsSource="{Binding DataList}" SelectedItem="{Binding DataSelected}" />
+        <DataGrid Grid.Row="6" Grid.ColumnSpan="4" ItemsSource="{Binding DataList}" SelectedItem="{Binding DataSelected}" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" />
 
         <Button Content="Dodaj nową kartę przedmiotu"  Click="Button_Click_1" Grid.Row="7" Grid.Column="3" Margin="0,10"/>
 

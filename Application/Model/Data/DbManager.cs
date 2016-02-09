@@ -70,25 +70,27 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                return (from kp in ctx.Karta_przedmiotu
-                        join pk in ctx.Program_kształcenia on kp.Program_KształceniaID equals pk.ID
-                        join p in ctx.Przedmiot on kp.PrzedmiotID equals p.ID
-                        join k in ctx.Kierunek on pk.KierunekID equals k.ID
-                        join w in ctx.Wydział on k.WydziałID equals w.ID
-                        select new ExSubjectCard()
-                            {
-                                NazwaPolska = kp.NazwaPolska,
-                                NazwaAngielska = kp.NazwaAngielska,
-                                FormaStudiów = (FormaStudiówEnum)pk.FormaStudiów,
-                                RodzajPrzedmiotu = (RodzajPrzedmiotuEnum)kp.RodzajPrzedmiotu,
-                                Stopień = (StopieńStudiówEnum)pk.PoziomKształcenia,
-                                Kod = p.Kod,
-                                Kierunek = k.Nazwa,
-                                Wydział = w.Nazwa,
-                                Specjalność = pk.Specjalność,
-                                Id=kp.ID
-                            }
+                var list = (from kp in ctx.Karta_przedmiotu
+                            join pk in ctx.Program_kształcenia on kp.Program_KształceniaID equals pk.ID
+                            join p in ctx.Przedmiot on kp.PrzedmiotID equals p.ID
+                            join k in ctx.Kierunek on pk.KierunekID equals k.ID
+                            join w in ctx.Wydział on k.WydziałID equals w.ID
+                            select new ExSubjectCard()
+                                {
+                                    NazwaPolska = kp.NazwaPolska,
+                                    NazwaAngielska = kp.NazwaAngielska,
+                                    FormaStudiów = (FormaStudiówEnum)pk.FormaStudiów,
+                                    RodzajPrzedmiotu = (RodzajPrzedmiotuEnum)kp.RodzajPrzedmiotu,
+                                    Stopień = (StopieńStudiówEnum)pk.PoziomKształcenia,
+                                    Kod = p.Kod,
+                                    Kierunek = k.Nazwa,
+                                    Wydział = w.Nazwa,
+                                    Specjalność = pk.Specjalność,
+                                    Id = kp.ID
+                                }
                         ).ToList();
+
+                return list;
             }
         }
 
@@ -125,7 +127,7 @@ namespace Model.Data
                 {
                     ctx.Narzędzia_dydaktyczne.Add(element);
                 }
-                
+
                 ctx.SaveChanges();
             }
         }
@@ -284,7 +286,7 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                return ctx.Literatura.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Typ==typ).ToList();
+                return ctx.Literatura.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Typ == typ).ToList();
             }
         }
 
@@ -308,7 +310,7 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                return ctx.Przedmiotowy_efekt_kształcenia.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Zakres==zakres).ToList();
+                return ctx.Przedmiotowy_efekt_kształcenia.Where(x => x.Karta_PrzedmiotuID == kartaID && x.Zakres == zakres).ToList();
             }
         }
     }

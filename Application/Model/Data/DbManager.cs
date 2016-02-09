@@ -29,15 +29,7 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                try
-                {
-                    return ctx.Przedmiot.Where(x => x.Kod.Equals(kodPrzedmiotu)).ToList().First();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-
+                return ctx.Przedmiot.Where(x => x.Kod.Equals(kodPrzedmiotu)).FirstOrDefault();
             }
         }
 
@@ -74,7 +66,7 @@ namespace Model.Data
         }
 
 
-        public static List<ExSubjectCard> GetKartyPrzedmiotu() // dodać filtr tylko na użytkownika
+        public static List<ExSubjectCard> GetKartyPrzedmiotu()
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -99,7 +91,7 @@ namespace Model.Data
             }
         }
 
-        public static List<ExSubjectCard> GetKartyPrzedmiotuBy(Func<ExSubjectCard, bool> filter) // dodać filtr tylko na użytkownika
+        public static List<ExSubjectCard> GetKartyPrzedmiotuBy(Func<ExSubjectCard, bool> filter)
         {
             return GetKartyPrzedmiotu().Where(x => filter(x)).ToList();
         }

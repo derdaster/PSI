@@ -23,6 +23,7 @@ namespace ModelView.Business
     {
         public event EventHandler SaveCompleted;
         public ICommand FilterCmd { get; set; }
+        public ICommand ClearCmd { get; set; }
         public ICommand GenerateXmlCmd { get; set; }
 
         #region Script
@@ -122,8 +123,11 @@ namespace ModelView.Business
 
         private void OnWydziałChanged()
         {
-            _KierunekList = new CollectionView(DbManager.GetKierunek(WydziałSelected.ID));
-            OnPropertyChanged("KierunekList");
+            if (WydziałSelected != null)
+            {
+                _KierunekList = new CollectionView(DbManager.GetKierunek(WydziałSelected.ID));
+                OnPropertyChanged("KierunekList");
+            }
         }
 
         public CollectionView KierunekList
@@ -278,8 +282,29 @@ namespace ModelView.Business
         public SubjectSearchModel()
         {
             FilterCmd = new RelayCommand(par => Filter());
+            ClearCmd = new RelayCommand(par => Clear());
             GenerateXmlCmd = new RelayCommand(par => GenerateXmlFile());
             Init();
+        }
+
+        private void Clear()
+        {
+            NazwaPrzedmiotuPl = String.Empty;
+            NazwaPrzedmiotuAng = String.Empty;
+            Specjalność = String.Empty;
+            KodPrzedmiotu = String.Empty;
+            
+            WydziałSelected = null;
+            _WydziałList = new CollectionView(new List<Wydział>());
+            OnPropertyChanged("WydziałList");
+            _WydziałList = new CollectionView(DbManager.GetWydział());
+            _KierunekList = new CollectionView(new List<Kierunek>());
+            OnPropertyChanged("KierunekList");
+            KierunekSelected = null;
+            StopieńStudiów = 0;
+            FormaStudiów = 0;
+            RodzajPrzedmiotu = 0;
+            GrupaKursów = 0;
         }
 
         private void GenerateXmlFile()

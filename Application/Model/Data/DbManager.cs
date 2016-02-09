@@ -252,10 +252,10 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
+                ctx.Autor_karty_przedmiotu.Add(autor);
                 karta.Autor_karty_przedmiotu.Add(autor);
                 ctx.Entry(karta).State = System.Data.Entity.EntityState.Modified;
                 ctx.SaveChanges();
-
             }
         }
 

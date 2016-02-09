@@ -314,7 +314,16 @@ namespace ModelView.Business
 
         public void Save()
         {
-            int programId = DbManager.GetProgramKsztalcenia((int)KierunekSelected, (int)StopieńStudiów, (int)FormaStudiów).Id;
+            ExSpecjalnosc program = DbManager.GetProgramKsztalcenia((int)KierunekSelected, (int)StopieńStudiów, (int)FormaStudiów);
+            int programId;
+            if (program == null)
+            {
+                programId = 0;
+            }
+            else
+            {
+                programId = program.Id;
+            }
             var przedmiot = DbManager.GetPrzedmiot(_KodPrzedmiotu);
             var autor = DbManager.GetAutor(Imię, Nazwisko, AdresEmail);
 

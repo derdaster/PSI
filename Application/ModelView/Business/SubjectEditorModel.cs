@@ -349,8 +349,8 @@ namespace ModelView.Business
                 PrzedmiotID = przedmiot.ID
             };
 
-            karta = DbManager.AddKartaPrzedmiotu(karta);
-            DbManager.JoinAutorWithKarta(karta, autor);
+            karta = DbManager.AddKartaPrzedmiotu(karta, autor);
+            //DbManager.JoinAutorWithKarta(karta, autor);
             List<Wymaganie_wstępne> wymagania=new List<Wymaganie_wstępne>();
             foreach (var element in WymaganiaList)
             {

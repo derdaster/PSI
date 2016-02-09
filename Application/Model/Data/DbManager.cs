@@ -110,6 +110,19 @@ namespace Model.Data
             }
         }
 
+        public static Karta_przedmiotu AddKartaPrzedmiotu(Karta_przedmiotu karta, Autor_karty_przedmiotu autor)
+        {
+            using (var ctx = new DbEasyKRK())
+            {
+                ctx.Karta_przedmiotu.Add(karta);
+                autor = ctx.Autor_karty_przedmiotu.Where(x => x.ID == autor.ID).First();
+                karta.Autor_karty_przedmiotu.Add(autor);
+                ctx.SaveChanges();
+
+                return karta;
+            }
+        }
+
         public static Narzędzia_dydaktyczne AddNarzedziaDydaktyczne(Narzędzia_dydaktyczne narzedzia)
         {
             using (var ctx = new DbEasyKRK())
@@ -252,9 +265,9 @@ namespace Model.Data
         {
             using (var ctx = new DbEasyKRK())
             {
-                ctx.Autor_karty_przedmiotu.Add(autor);
+                karta = ctx.Karta_przedmiotu.Where(x => x == karta).First();
                 karta.Autor_karty_przedmiotu.Add(autor);
-                ctx.Entry(karta).State = System.Data.Entity.EntityState.Modified;
+                autor.Karta_przedmiotu.Add(karta);
                 ctx.SaveChanges();
             }
         }

@@ -73,7 +73,7 @@ namespace ModelView.Business
         private StopieńStudiówEnum _StopieńStudiów;
         private FormaStudiówEnum _FormaStudiów;
         private RodzajPrzedmiotuEnum _RodzajPrzedmiotu;
-        private bool _GrupaKursów;
+        private GrupaKursowEnum _GrupaKursów;
 
         private ObservableCollection<ExSubjectCard> _DataList;
         private ExSubjectCard _DataSelected;
@@ -238,7 +238,7 @@ namespace ModelView.Business
         }
 
 
-        public bool GrupaKursów
+        public GrupaKursowEnum GrupaKursów
         {
             get { return _GrupaKursów; }
             set
@@ -335,7 +335,8 @@ namespace ModelView.Business
             if (!String.IsNullOrWhiteSpace(KodPrzedmiotu) && !item.Kod.ToLower().Contains(KodPrzedmiotu.ToLower()))
             { return false; }
 
-            // grupa kursów
+            if (GrupaKursów != 0 && item.GrupaKursów != GrupaKursów)
+            { return false; }
 
             return true;
         }

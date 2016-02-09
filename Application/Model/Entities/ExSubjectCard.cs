@@ -20,7 +20,7 @@ namespace Model.Entities
         public StopieńStudiówEnum Stopień { get; set; }
         public FormaStudiówEnum FormaStudiów { get; set; }
         public RodzajPrzedmiotuEnum RodzajPrzedmiotu { get; set; }
-        public string GrupaKursów { get; set; }
+        public GrupaKursowEnum GrupaKursów { get; set; }
     }
 
 

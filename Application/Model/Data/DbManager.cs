@@ -86,7 +86,8 @@ namespace Model.Data
                                     Kierunek = k.Nazwa,
                                     Wydział = w.Nazwa,
                                     Specjalność = pk.Specjalność,
-                                    Id = kp.ID
+                                    Id = kp.ID,
+                                    GrupaKursów = kp.GrupaKursów ? GrupaKursowEnum.Tak : GrupaKursowEnum.Nie
                                 }
                         ).ToList();
 

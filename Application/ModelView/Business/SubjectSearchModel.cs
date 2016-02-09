@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,7 +62,6 @@ namespace ModelView.Business
         private string _NazwaPrzedmiotuPl;
         private string _NazwaPrzedmiotuAng;
         private string _Specjalność;
-        private string _Ścieżka;
         private string _KodPrzedmiotu;
         private string _Imię;
         private string _Nazwisko;
@@ -150,17 +151,6 @@ namespace ModelView.Business
                 if (value == _Specjalność) return;
                 _Specjalność = value;
                 OnPropertyChanged("Specjalność");
-            }
-        }
-
-        public string Ścieżka
-        {
-            get { return _Ścieżka; }
-            set
-            {
-                if (value == _Ścieżka) return;
-                _Ścieżka = value;
-                OnPropertyChanged("Ścieżka");
             }
         }
 
@@ -300,9 +290,9 @@ namespace ModelView.Business
                 return;
             }
 
-            writeToXml(DataSelected);
+            var path = WriteToXml(DataSelected);
 
-            MessageBox.Show("Karta przedmiotu została zapisana");
+            MessageBox.Show("Karta przedmiotu została zapisana w lokalizacji: " + path);
         }
 
         private void Init()
@@ -358,9 +348,10 @@ namespace ModelView.Business
             }
         }
 
-        private void writeToXml(ExSubjectCard kartaPrzedmiotu)
+        private string WriteToXml(ExSubjectCard kartaPrzedmiotu)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(Ścieżka);
+            var path = AppDomain.CurrentDomain.BaseDirectory + kartaPrzedmiotu.Kod + ".xml";
+            System.IO.StreamWriter file = new System.IO.StreamWriter(path);
             XElement kartaXML = new XElement("Karta");
             kartaXML.Add(new XElement("Nazwa_polska", kartaPrzedmiotu.NazwaPolska));
             kartaXML.Add(new XElement("Nazwa_angielska", kartaPrzedmiotu.NazwaAngielska));
@@ -375,14 +366,13 @@ namespace ModelView.Business
             List<Wymaganie_wstępne> wymagania = DbManager.getWymagania(kartaPrzedmiotu.Id);
             List<Cel_przedmiotu> cele = DbManager.getCele(1);
             List<Narzędzia_dydaktyczne> narzędzia = DbManager.getNarzędzia(1);
-            
+
             XElement tree = new XElement("Wymagania_wstepne");
             int i = 0;
             foreach (var element in wymagania)
             {
                 i++;
                 tree.Add(new XElement("Wymaganie_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -392,7 +382,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("Cel_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -402,7 +391,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("N_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -413,7 +401,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("L_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -424,7 +411,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("L_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -435,7 +421,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("PEK_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -446,7 +431,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("PEK_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -457,7 +441,6 @@ namespace ModelView.Business
             {
                 i++;
                 tree.Add(new XElement("PEK_" + i.ToString(), element.Nazwa));
-
             }
             kartaXML.Add(tree);
 
@@ -467,22 +450,22 @@ namespace ModelView.Business
             foreach (var element in treści)
             {
                 i++;
-                
+
                 XElement tree2 = new XElement("F" + element.FormaZajeć.ToString());
                 List<Temat_zajęć> tematy = DbManager.getTematyZajęć((int)element.FormaZajeć);
                 int j = 0;
                 foreach (var element2 in tematy)
                 {
-                    tree2.Add(new XElement("Nr"+element2.NumerZajęć.ToString(), element2.Temat));
+                    tree2.Add(new XElement("Nr" + element2.NumerZajęć.ToString(), element2.Temat));
                 }
                 tree.Add(tree2);
-
             }
             kartaXML.Add(tree);
 
             file.WriteLine(kartaXML);
             file.Close();
 
+            return path;
         }
     }
 }

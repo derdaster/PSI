@@ -10,6 +10,7 @@ namespace Model.Entities
 {
     public class ExSubjectCard
     {
+        public int Id { get; set; }
         public string Kod { get; set; }
         public string NazwaPolska { get; set; }
         public string NazwaAngielska { get; set; }

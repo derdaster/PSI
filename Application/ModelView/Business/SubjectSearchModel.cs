@@ -60,6 +60,7 @@ namespace ModelView.Business
         private string _NazwaPrzedmiotuPl;
         private string _NazwaPrzedmiotuAng;
         private string _Specjalność;
+        private string _Ścieżka;
         private string _KodPrzedmiotu;
         private string _Imię;
         private string _Nazwisko;
@@ -149,6 +150,17 @@ namespace ModelView.Business
                 if (value == _Specjalność) return;
                 _Specjalność = value;
                 OnPropertyChanged("Specjalność");
+            }
+        }
+
+        public string Ścieżka
+        {
+            get { return _Ścieżka; }
+            set
+            {
+                if (value == _Ścieżka) return;
+                _Ścieżka = value;
+                OnPropertyChanged("Ścieżka");
             }
         }
 
@@ -329,7 +341,7 @@ namespace ModelView.Business
 
         private void writeToXml(ExSubjectCard kartaPrzedmiotu)
         {
-            System.IO.StreamWriter file = new System.IO.StreamWriter(@"D:\test.xml");
+            System.IO.StreamWriter file = new System.IO.StreamWriter(Ścieżka);
             XElement kartaXML = new XElement("Karta");
             kartaXML.Add(new XElement("Nazwa_polska", kartaPrzedmiotu.NazwaPolska));
             kartaXML.Add(new XElement("Nazwa_angielska", kartaPrzedmiotu.NazwaAngielska));
@@ -341,7 +353,7 @@ namespace ModelView.Business
             kartaXML.Add(new XElement("Kierunek", kartaPrzedmiotu.Kierunek));
             kartaXML.Add(new XElement("Specjalnosc", kartaPrzedmiotu.Specjalność));
 
-            List<Wymaganie_wstępne> wymagania = DbManager.getWymagania(1);
+            List<Wymaganie_wstępne> wymagania = DbManager.getWymagania(kartaPrzedmiotu.Id);
             List<Cel_przedmiotu> cele = DbManager.getCele(1);
             List<Narzędzia_dydaktyczne> narzędzia = DbManager.getNarzędzia(1);
             
@@ -375,7 +387,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            List<Literatura> literatura = DbManager.getLiteratura(1,1);
+            List<Literatura> literatura = DbManager.getLiteratura(kartaPrzedmiotu.Id, 1);
             tree = new XElement("Literatura_podstawowa");
             i = 0;
             foreach (var element in literatura)
@@ -386,7 +398,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            literatura = DbManager.getLiteratura(1, 2);
+            literatura = DbManager.getLiteratura(kartaPrzedmiotu.Id, 2);
             tree = new XElement("Literatura_uzupelniajaca");
             i = 0;
             foreach (var element in literatura)
@@ -397,7 +409,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            List<Przedmiotowy_efekt_kształcenia> peki = DbManager.getPEK(1,1);
+            List<Przedmiotowy_efekt_kształcenia> peki = DbManager.getPEK(kartaPrzedmiotu.Id, 1);
             tree = new XElement("PEK_z_zakresu_wiedzy");
             i = 0;
             foreach (var element in peki)
@@ -408,7 +420,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            peki = DbManager.getPEK(1, 2);
+            peki = DbManager.getPEK(kartaPrzedmiotu.Id, 2);
             tree = new XElement("PEK_z_zakresu_umiejętności");
             i = 0;
             foreach (var element in peki)
@@ -419,7 +431,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            peki = DbManager.getPEK(1, 2);
+            peki = DbManager.getPEK(kartaPrzedmiotu.Id, 3);
             tree = new XElement("PEK_z_zakresu_kompetencji");
             i = 0;
             foreach (var element in peki)
@@ -430,7 +442,7 @@ namespace ModelView.Business
             }
             kartaXML.Add(tree);
 
-            List<Treść_programowa> treści = DbManager.getTreściProgramowe(1);
+            List<Treść_programowa> treści = DbManager.getTreściProgramowe(kartaPrzedmiotu.Id);
             tree = new XElement("Treść_programowa");
             i = 0;
             foreach (var element in treści)

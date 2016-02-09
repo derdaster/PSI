@@ -93,7 +93,8 @@ namespace Model.Data
                                 Kod = p.Kod,
                                 Kierunek = k.Nazwa,
                                 Wydział = w.Nazwa,
-                                Specjalność = pk.Specjalność
+                                Specjalność = pk.Specjalność,
+                                Id=kp.ID
                             }
                         ).ToList();
             }

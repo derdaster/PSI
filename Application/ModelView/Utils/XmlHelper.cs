@@ -26,9 +26,9 @@ namespace ModelView.Utils
             kartaXML.Add(new XElement("Kierunek", kartaPrzedmiotu.Kierunek));
             kartaXML.Add(new XElement("Specjalnosc", kartaPrzedmiotu.Specjalność));
 
-            List<Wymaganie_wstępne> wymagania = DbManager.getWymagania(kartaPrzedmiotu.Id);
-            List<Cel_przedmiotu> cele = DbManager.getCele(1);
-            List<Narzędzia_dydaktyczne> narzędzia = DbManager.getNarzędzia(1);
+            List<Wymaganie_wstępne> wymagania = DbManager.GetWymagania(kartaPrzedmiotu.Id);
+            List<Cel_przedmiotu> cele = DbManager.GetCele(1);
+            List<Narzędzia_dydaktyczne> narzędzia = DbManager.GetNarzędzia(1);
 
             XElement tree = new XElement("Wymagania_wstepne");
             int i = 0;
@@ -57,7 +57,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            List<Literatura> literatura = DbManager.getLiteratura(kartaPrzedmiotu.Id, 1);
+            List<Literatura> literatura = DbManager.GetLiteratura(kartaPrzedmiotu.Id, 1);
             tree = new XElement("Literatura_podstawowa");
             i = 0;
             foreach (var element in literatura)
@@ -67,7 +67,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            literatura = DbManager.getLiteratura(kartaPrzedmiotu.Id, 2);
+            literatura = DbManager.GetLiteratura(kartaPrzedmiotu.Id, 2);
             tree = new XElement("Literatura_uzupelniajaca");
             i = 0;
             foreach (var element in literatura)
@@ -77,7 +77,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            List<Przedmiotowy_efekt_kształcenia> peki = DbManager.getPEK(kartaPrzedmiotu.Id, 1);
+            List<Przedmiotowy_efekt_kształcenia> peki = DbManager.GetPEK(kartaPrzedmiotu.Id, 1);
             tree = new XElement("PEK_z_zakresu_wiedzy");
             i = 0;
             foreach (var element in peki)
@@ -87,7 +87,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            peki = DbManager.getPEK(kartaPrzedmiotu.Id, 2);
+            peki = DbManager.GetPEK(kartaPrzedmiotu.Id, 2);
             tree = new XElement("PEK_z_zakresu_umiejętności");
             i = 0;
             foreach (var element in peki)
@@ -97,7 +97,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            peki = DbManager.getPEK(kartaPrzedmiotu.Id, 3);
+            peki = DbManager.GetPEK(kartaPrzedmiotu.Id, 3);
             tree = new XElement("PEK_z_zakresu_kompetencji");
             i = 0;
             foreach (var element in peki)
@@ -107,7 +107,7 @@ namespace ModelView.Utils
             }
             kartaXML.Add(tree);
 
-            List<Treść_programowa> treści = DbManager.getTreściProgramowe(kartaPrzedmiotu.Id);
+            List<Treść_programowa> treści = DbManager.GetTreściProgramowe(kartaPrzedmiotu.Id);
             tree = new XElement("Treść_programowa");
             i = 0;
             foreach (var element in treści)
@@ -115,7 +115,7 @@ namespace ModelView.Utils
                 i++;
 
                 XElement tree2 = new XElement("F" + element.FormaZajeć.ToString());
-                List<Temat_zajęć> tematy = DbManager.getTematyZajęć((int)element.FormaZajeć);
+                List<Temat_zajęć> tematy = DbManager.GetTematyZajęć((int)element.FormaZajeć);
                 int j = 0;
                 foreach (var element2 in tematy)
                 {

@@ -258,7 +258,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Wymaganie_wstępne> getWymagania(int kartaID)
+        public static List<Wymaganie_wstępne> GetWymagania(int kartaID)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -266,7 +266,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Cel_przedmiotu> getCele(int kartaID)
+        public static List<Cel_przedmiotu> GetCele(int kartaID)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -274,7 +274,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Narzędzia_dydaktyczne> getNarzędzia(int kartaID)
+        public static List<Narzędzia_dydaktyczne> GetNarzędzia(int kartaID)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -282,7 +282,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Literatura> getLiteratura(int kartaID, int typ)
+        public static List<Literatura> GetLiteratura(int kartaID, int typ)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -290,7 +290,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Treść_programowa> getTreściProgramowe(int kartaID)
+        public static List<Treść_programowa> GetTreściProgramowe(int kartaID)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -298,7 +298,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Temat_zajęć> getTematyZajęć(int trescID)
+        public static List<Temat_zajęć> GetTematyZajęć(int trescID)
         {
             using (var ctx = new DbEasyKRK())
             {
@@ -306,7 +306,7 @@ namespace Model.Data
             }
         }
 
-        public static List<Przedmiotowy_efekt_kształcenia> getPEK(int kartaID, int zakres)
+        public static List<Przedmiotowy_efekt_kształcenia> GetPEK(int kartaID, int zakres)
         {
             using (var ctx = new DbEasyKRK())
             {
